@@ -1,0 +1,4 @@
+Pre-Version 0.1.0
+	added, changelog
+	bugfix, fixed minor bugs
+	deleted, doku files 
