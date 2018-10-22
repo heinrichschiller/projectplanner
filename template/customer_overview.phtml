@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf8">
+        <title>Hauptseite</title>
+        <link href="http://projektmanager.localhost/skin/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <h1>Project-Planner</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="http://projektmanager.localhost/index/mainpage">Home</a></li>
+                <li><a href="http://projektmanager.localhost/customer/index">Kunden</a></li>
+                <li><a href="http://projektmanager.localhost/project/index">Projekte</a></li>
+                <li><a href="http://projektmanager.localhost/task/index">Aufgaben</a></li>
+            </ul>
+        </nav>
+        <div>
+            <form action="http://projektmanager.localhost/customer/add" method="post">
+                <br>
+                <div>
+                    <h2>Kunde</h2>
+                </div>
+                <div>
+                    <label for="name">Firma:</label>
+                    <input type="text" name="name" value="<?php echo $customer->getName(); ?>" id="name">
+                </div>
+                <div>
+                    <label for="firstname">Vorname:</label>
+                    <input type="text" name="firstname" value="<?php echo $customer->getFirstname(); ?>" id="firstname">
+                    <label for="lastname">Nachname:</label>
+                    <input type="text" name="lastname" value="<?php echo $customer->getLastname(); ?>" id="lastname">
+                </div>
+                <div>
+                    <label for="city">Ort:</label>
+                    <input type="text" name="city" value="<?php echo $customer->getCity(); ?>" id="city">
+                </div>
+                <div>
+                    <label for="phone">Telefon:</label>
+                    <input type="text" name="phone" value="<?php echo $customer->getPhone(); ?>" id="phone">
+                </div>
+                <div class="container">
+                    <!-- Projektübersicht -->
+                    <div class="projects">
+                        <p class="overview">Projektübersicht</p><hr>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Projektname</th>
+                                    <th>Beschreibung</th>
+                                    <th>Begin</th>
+                                    <th>Ende</th>
+                                    <th>Status</th>
+                                    <th>Erstellt am</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              <?php foreach($projects as $project): ?>
+                                  <tr>
+                                      <td><?php echo $project->getId(); ?></td>
+                                      <td><?php echo $project->getTitle(); ?></td>
+                                      <td><?php echo $project->getDesc(); ?></td>
+                                      <td><?php echo $project->getBegin(); ?></td>
+                                      <td><?php echo $project->getEnd(); ?></td>
+                                      <td><?php echo $project->getStatus(); ?></td>
+                                      <td><?php echo $project->getCreatedAt(); ?></td>
+                                  </tr>
+                              <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Projektübersicht -->
+                    <!-- Aufgabenübersicht -->
+                    <div class="tasks">
+                        <p class="overview">Aufgabenübersicht</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Titel</th>
+                                    <th>Beschreibung</th>
+                                    <th>Begin</th>
+                                    <th>Ende</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              <?php foreach($tasks as $task): ?>
+                                  <tr>
+                                      <td><?php echo $task->getId(); ?></td>
+                                      <td><?php echo $task->getTitle(); ?></td>
+                                      <td><?php echo $task->getDesc(); ?></td>
+                                      <td><?php echo $task->getBegin(); ?></td>
+                                      <td><?php echo $task->getEnd(); ?></td>
+                                      <td><?php echo $task->getStatus(); ?></td>
+                                  </tr>
+                              <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Aufgabenübersicht -->
+                </div>
+                <div>
+                    <button type="submit">Speichern</button>&nbsp;&nbsp;
+                    <button type="submit">Bearbeiten</button>&nbsp;&nbsp;
+                    <button type="submit">Löschen</button>
+                    <button>Abbrechen</button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

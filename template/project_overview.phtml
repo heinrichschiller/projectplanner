@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf8">
+        <title>Hauptseite</title>
+        <link href="http://projektmanager.localhost/skin/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <h1>Project-Planner</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="http://projektmanager.localhost/index/mainpage">Home</a></li>
+                <li><a href="http://projektmanager.localhost/customer/index">Kunden</a></li>
+                <li><a href="http://projektmanager.localhost/project/index">Projekte</a></li>
+                <li><a href="http://projektmanager.localhost/task/index">Aufgaben</a></li>
+            </ul>
+        </nav>
+        <div>
+            <form method="post">
+                <br>
+                <div>
+                    <h2>Neues Projekt</h2>
+                </div>
+                <div>
+                    <label for="name">Titel:</label>
+                    <input type="text" name="name" id="name">
+                </div>
+                <div>
+                    <label for="customer">Kunde:</label>
+                    <select id="customer">
+                        <option>Bitte wählen ...</option>
+                        <option>digital-connect GmbH</option>
+                        <option>Max Mustermann GmbH</option>
+                        <option>Atomkraftwerk Springfield</option>
+                        <option>Washington Museum</option>
+                    </select>
+                <div>
+                    <label for="customer">Ansprechp.:</label>
+                    <select id="customer">
+                        <option>Bitte wählen ...</option>
+                        <option>digital-connect GmbH</option>
+                        <option>Max Mustermann GmbH</option>
+                        <option>Atomkraftwerk Springfield</option>
+                        <option>Washington Museum</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="desc">Beschreibung:</label>
+                    <textarea name="desc" id="desc"></textarea>
+                </div>
+                <div>
+                    <label for="begin">Anfang:</label>
+                    <input type="text" name="begin" id="begin">
+                    <label for="end">Ende:</label>
+                    <input type="text" name="end" id="end">
+                </div>
+                <div>
+                    <label for="status">Status:</label>
+                    <select id="status">
+                        <option>aktiv</option>
+                        <option>beendet</option>
+                    </select>
+                </div>
+                <button>Anlegen</button>
+                <button>Abbrechen</button>
+            </form>
+        </div>
+    </body>
+</html>
+

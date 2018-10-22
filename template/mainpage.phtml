@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf8">
+        <title>Hauptseite</title>
+        <link href="http://projektmanager.localhost/skin/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <h1>Project-Planner</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="http://projektmanager.localhost/index/mainpage">Home</a></li>
+                <li><a href="http://projektmanager.localhost/customer/index">Kunden</a></li>
+                <li><a href="http://projektmanager.localhost/project/index">Projekte</a></li>
+                <li><a href="http://projektmanager.localhost/task/index">Aufgaben</a></li>
+            </ul>
+        </nav>
+        <!-- Kundenübersicht -->
+        <div>
+            <p class="overview">Kundenübersicht</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Firma</th>
+                        <th>Ansprechpartner</th>
+                        <th>Ort</th>
+                        <th>Telefon</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <?php foreach($customers as $customer): ?>
+                      <tr>
+                          <td><?php echo $customer->getId(); ?></td>
+                          <td><?php echo $customer->getName(); ?></td>
+                          <td><?php echo $customer->getFirstname() . '&nbsp;'
+                            . $customer->getLastname(); ?></td>
+                          <td><?php echo $customer->getCity(); ?></td>
+                          <td><?php echo $customer->getPhone(); ?></td>
+                      </tr>
+                  <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+        <!-- -->
+        <!-- Projektübersicht -->
+        <div>
+            <p class="overview">Projektübersicht</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Projektname</th>
+                        <th>Beschreibung</th>
+                        <th>Begin</th>
+                        <th>Ende</th>
+                        <th>Status</th>
+                        <th>Erstellt am</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <?php foreach($projects as $project): ?>
+                      <tr>
+                          <td><?php echo $project->getId(); ?></td>
+                          <td><?php echo $project->getTitle(); ?></td>
+                          <td><?php echo $project->getDesc(); ?></td>
+                          <td><?php echo $project->getBegin(); ?></td>
+                          <td><?php echo $project->getEnd(); ?></td>
+                          <td><?php echo $project->getStatus(); ?></td>
+                          <td><?php echo $project->getCreatedAt(); ?></td>
+                      </tr>
+                  <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+        <!-- Projekte -->
+        <!-- Aufgabenübersicht -->
+        <div>
+            <p class="overview">Aufgabenübersicht</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Titel</th>
+                        <th>Beschreibung</th>
+                        <th>Begin</th>
+                        <th>Ende</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <?php foreach($tasks as $task): ?>
+                      <tr>
+                          <td><?php echo $task->getId(); ?></td>
+                          <td><?php echo $task->getTitle(); ?></td>
+                          <td><?php echo $task->getDesc(); ?></td>
+                          <td><?php echo $task->getBegin(); ?></td>
+                          <td><?php echo $task->getEnd(); ?></td>
+                          <td><?php echo $task->getStatus(); ?></td>
+                      </tr>
+                  <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+        <!-- Aufgabenübersicht -->
+    </body>
+</html>

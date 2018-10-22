@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf8">
+        <title>Hauptseite</title>
+        <link href="http://projektmanager.localhost/skin/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <h1>Project-Planner</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="http://projektmanager.localhost/index/mainpage">Home</a></li>
+                <li><a href="http://projektmanager.localhost/customer/index">Kunden</a></li>
+                <li><a href="http://projektmanager.localhost/project/index">Projekte</a></li>
+                <li><a href="http://projektmanager.localhost/task/index">Aufgaben</a></li>
+            </ul>
+        </nav>
+        <div>
+            <form action="http://projektmanager.localhost/customer/add" method="post">
+                <br>
+                <div>
+                    <h2>Neuer Kunde</h2>
+                </div>
+                <div>
+                    <label for="name">Firma:</label>
+                    <input type="text" name="name" id="name">
+                </div>
+                <div>
+                    <label for="firstname">Vorname:</label>
+                    <input type="text" name="firstname" id="firstname">
+                    <label for="lastname">Nachname:</label>
+                    <input type="text" name="lastname" id="lastname">
+                </div>
+                <div>
+                    <label for="city">Ort:</label>
+                    <input type="text" name="city" id="city">
+                </div>
+                <div>
+                    <label for="phone">Telefon:</label>
+                    <input type="text" name="phone" id="phone">
+                </div>
+                <div>
+                    <button type="submit">Anlegen</button>&nbsp;&nbsp;
+                    <button type="reset">Abbrechen</button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

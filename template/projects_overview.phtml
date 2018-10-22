@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf8">
+        <title>Hauptseite</title>
+        <link href="http://projektmanager.localhost/skin/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <h1>Project-Planner</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="http://projektmanager.localhost/index/mainpage">Home</a></li>
+                <li><a href="http://projektmanager.localhost/customer/index">Kunden</a></li>
+                <li><a href="http://projektmanager.localhost/project/index">Projekte</a></li>
+                <li><a href="http://projektmanager.localhost/task/index">Aufgaben</a></li>
+            </ul>
+        </nav>
+        <!-- Projektübersicht -->
+        <div>
+            <p class="overview">Projektübersicht</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Projektname</th>
+                        <th>Beschreibung</th>
+                        <th>Begin</th>
+                        <th>Ende</th>
+                        <th>Status</th>
+                        <th>Erstellt am</th>
+                        <th colspan="3">Aktionen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <?php foreach($projects as $project): ?>
+                      <tr>
+                          <td><?php echo $project->getId(); ?></td>
+                          <td><?php echo $project->getTitle(); ?></td>
+                          <td><?php echo $project->getDesc(); ?></td>
+                          <td><?php echo $project->getBegin(); ?></td>
+                          <td><?php echo $project->getEnd(); ?></td>
+                          <td><?php echo $project->getStatus(); ?></td>
+                          <td><?php echo $project->getCreatedAt(); ?></td>
+                          <td><a class="workaround" href="http://projektmanager.localhost/project/view/id/<?php echo $project->getId(); ?>">Übersicht</a></td>
+                          <td><a class="workaround" href="http://projektmanager.localhost/project/edit/id/<?php echo $project->getId(); ?>">Bearbeiten</a></td>
+                          <td><a class="workaround" href="http://projektmanager.localhost/project/delete/id/<?php echo $project->getId(); ?>">Löschen</a></td>
+                      </tr>
+                  <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+        <!-- Projektübersicht -->
+        <ul>
+            <li><a href="http://projektmanager.localhost/project/new">Neues Projekt</a></li>
+        </ul>
+    </body>
+</html>
