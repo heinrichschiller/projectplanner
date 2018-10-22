@@ -101,12 +101,12 @@ class Project extends Base
 
         $stmt = $con->prepare($sql);
 
-        $stmt->bindParam(':title', $value['title']);
-        $stmt->bindParam(':desc', $value['desc']);
-        $stmt->bindParam(':begin', $value['begin']);
-        $stmt->bindParam('end', $value['end']);
-        $stmt->bindParam('status', $value['status']);
-        $stmt->bindParam('customer_id', $value['customer_id']);
+        $stmt->bindParam(':title', $values['title']);
+        $stmt->bindParam(':desc', $values['desc']);
+        $stmt->bindParam(':begin', $values['begin']);
+        $stmt->bindParam('end', $values['end']);
+        $stmt->bindParam('status', $values['status']);
+        $stmt->bindParam('customer_id', $values['customer_id']);
 
         $stmt->execute();
     }

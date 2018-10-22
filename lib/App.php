@@ -4,6 +4,6 @@ class App
 {
     public static function getBaseUrl()
     {
-        return "http://projektmanager.localhost/";
+        return "http://projectplanner.localhost/";
     }
 }

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf8">
         <title>Hauptseite</title>
-        <link href="http://projektmanager.localhost/skin/css/style.css" rel="stylesheet">
+        <link href="<?php echo \App::getBaseUrl(); ?>skin/css/style.css" rel="stylesheet">
     </head>
     <body>
         <header>
@@ -11,14 +11,14 @@
         </header>
         <nav>
             <ul>
-                <li><a href="http://projektmanager.localhost/index/mainpage">Home</a></li>
-                <li><a href="http://projektmanager.localhost/customer/index">Kunden</a></li>
-                <li><a href="http://projektmanager.localhost/project/index">Projekte</a></li>
-                <li><a href="http://projektmanager.localhost/task/index">Aufgaben</a></li>
+                <li><a href="<?php echo \App::getBaseUrl(); ?>index/mainpage">Home</a></li>
+                <li><a href="<?php echo \App::getBaseUrl(); ?>customer/index">Kunden</a></li>
+                <li><a href="<?php echo \App::getBaseUrl(); ?>project/index">Projekte</a></li>
+                <li><a href="<?php echo \App::getBaseUrl(); ?>task/index">Aufgaben</a></li>
             </ul>
         </nav>
         <div>
-            <form action="http://projektmanager.localhost/customer/add" method="post">
+            <form action="<?php echo \App::getBaseUrl(); ?>customer/add" method="post">
                 <br>
                 <div>
                     <h2>Neuer Kunde</h2>

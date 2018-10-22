@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf8">
         <title>Hauptseite</title>
-        <link href="http://projektmanager.localhost/skin/css/style.css" rel="stylesheet">
+        <link href="<?php echo \App::getBaseUrl(); ?>skin/css/style.css" rel="stylesheet">
     </head>
     <body>
         <header>
@@ -11,10 +11,10 @@
         </header>
         <nav>
             <ul>
-                <li><a href="http://projektmanager.localhost/index/mainpage">Home</a></li>
-                <li><a href="http://projektmanager.localhost/customer/index">Kunden</a></li>
-                <li><a href="http://projektmanager.localhost/project/index">Projekte</a></li>
-                <li><a href="http://projektmanager.localhost/task/index">Aufgaben</a></li>
+                <li><a href="<?php echo \App::getBaseUrl(); ?>index/mainpage">Home</a></li>
+                <li><a href="<?php echo \App::getBaseUrl(); ?>customer/index">Kunden</a></li>
+                <li><a href="<?php echo \App::getBaseUrl(); ?>project/index">Projekte</a></li>
+                <li><a href="<?php echo \App::getBaseUrl(); ?>task/index">Aufgaben</a></li>
             </ul>
         </nav>
         <!-- Kundenübersicht -->
@@ -40,9 +40,9 @@
                             . $customer->getLastname(); ?></td>
                           <td><?php echo $customer->getCity(); ?></td>
                           <td><?php echo $customer->getPhone(); ?></td>
-                          <td><a class="workaround" href="http://projektmanager.localhost/customer/view/id/<?php echo $customer->getId(); ?>">Übersicht</a></td>
-                          <td><a class="workaround" href="http://projektmanager.localhost/customer/edit/id/<?php echo $customer->getId(); ?>">Bearbeiten</a></td>
-                          <td><a class="workaround" href="http://projektmanager.localhost/customer/delete/id/<?php echo $customer->getId(); ?>">Löschen</a></td>
+                          <td><a class="workaround" href="<?php echo \App::getBaseUrl(); ?>customer/view/id/<?php echo $customer->getId(); ?>">Übersicht</a></td>
+                          <td><a class="workaround" href="<?php echo \App::getBaseUrl(); ?>customer/edit/id/<?php echo $customer->getId(); ?>">Bearbeiten</a></td>
+                          <td><a class="workaround" href="<?php echo \App::getBaseUrl(); ?>customer/delete/id/<?php echo $customer->getId(); ?>">Löschen</a></td>
                       </tr>
                   <?php endforeach; ?>
                 </tbody>
@@ -50,7 +50,7 @@
         </div>
         <!-- Kundenübersicht -->
         <ul>
-            <li><a href="http://projektmanager.localhost/customer/new">Neuer Kunde</a></li>
+            <li><a href="<?php echo \App::getBaseUrl(); ?>customer/new">Neuer Kunde</a></li>
         </ul>
     </body>
 </html>
