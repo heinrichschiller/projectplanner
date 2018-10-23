@@ -86,4 +86,40 @@ class Task extends Base
 
         return $taskList;
     }
+    
+    public function add(array $values)
+    {
+        $sql = "
+        INSERT INTO `tasks`(
+            `title`,
+            `desc`,
+            `begin`,
+            `end`,
+            `status`,
+            `customer_id`,
+            `project_id`)
+            VALUES (
+                :title,
+                :desc,
+                :begin,
+                :end,
+                :status,
+                :customer_id,
+                :project_id)
+        ";
+        
+        $con = $this->connect();
+        
+        $stmt = $con->prepare($sql);
+        
+        $stmt->bindParam(':title', $values['title']);
+        $stmt->bindParam(':desc', $values['desc']);
+        $stmt->bindParam(':begin', $values['begin']);
+        $stmt->bindParam(':end', $values['end']);
+        $stmt->bindParam(':status', $values['status']);
+        $stmt->bindParam(':customer_id', $values['customerId']);
+        $stmt->bindParam(':project_id', $values['projectId']);
+        
+        $stmt->execute();
+    }
 }
