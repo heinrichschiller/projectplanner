@@ -42,9 +42,9 @@ class Customer extends Base
         return $customerList;
     }
 
-    public function getCustomer(array $params)
+    public function getCustomer(int $id)
     {
-        $sql = '
+        $sql = "
         SELECT `id`,
             `name`,
             `firstname`,
@@ -54,7 +54,8 @@ class Customer extends Base
             `created_at`,
             `updated_at`
             FROM `customer`
-            WHERE `id` = ' . $params['id'];
+            WHERE `id` = $id
+        ";
 
         $dbResult = $this->connect()->query($sql);
 
