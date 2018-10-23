@@ -11,7 +11,7 @@
         </header>
         <nav>
             <ul>
-                <li><a href="<?php echo \App::getBaseUrl(); ?>index/mainpage">Home</a></li>
+                <li><a href="<?php echo \App::getBaseUrl(); ?>index/main">Home</a></li>
                 <li><a href="<?php echo \App::getBaseUrl(); ?>customer/index">Kunden</a></li>
                 <li><a href="<?php echo \App::getBaseUrl(); ?>project/index">Projekte</a></li>
                 <li><a href="<?php echo \App::getBaseUrl(); ?>task/index">Aufgaben</a></li>
@@ -43,9 +43,9 @@
                           <td><?php echo $project->getEnd(); ?></td>
                           <td><?php echo $project->getStatus(); ?></td>
                           <td><?php echo $project->getCreatedAt(); ?></td>
-                          <td><a class="workaround" href="http://projektmanager.localhost/project/view/id/<?php echo $project->getId(); ?>">Übersicht</a></td>
-                          <td><a class="workaround" href="http://projektmanager.localhost/project/edit/id/<?php echo $project->getId(); ?>">Bearbeiten</a></td>
-                          <td><a class="workaround" href="http://projektmanager.localhost/project/delete/id/<?php echo $project->getId(); ?>">Löschen</a></td>
+                          <td><a class="workaround" href="<?php echo \App::getBaseUrl(); ?>project/view/id/<?php echo $project->getId(); ?>">Übersicht</a></td>
+                          <td><a class="workaround" href="<?php echo \App::getBaseUrl(); ?>project/edit/id/<?php echo $project->getId(); ?>">Bearbeiten</a></td>
+                          <td><a class="workaround" href="<?php echo \App::getBaseUrl(); ?>project/delete/id/<?php echo $project->getId(); ?>">Löschen</a></td>
                       </tr>
                   <?php endforeach; ?>
                 </tbody>
@@ -53,7 +53,7 @@
         </div>
         <!-- Projektübersicht -->
         <ul>
-            <li><a href="http://projektmanager.localhost/project/new">Neues Projekt</a></li>
+            <li><a href="<?php echo \App::getBaseUrl(); ?>project/new">Neues Projekt</a></li>
         </ul>
     </body>
 </html>
