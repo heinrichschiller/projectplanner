@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf8">
+        <title>Hauptseite</title>
+        <link href="<?php echo \App::getBaseUrl(); ?>skin/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <h1>Project-Planner</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="<?php echo \App::getBaseUrl(); ?>index/main">Home</a></li>
+                <li><a href="<?php echo \App::getBaseUrl(); ?>customer/index">Kunden</a></li>
+                <li><a href="<?php echo \App::getBaseUrl(); ?>project/index">Projekte</a></li>
+                <li><a href="<?php echo \App::getBaseUrl(); ?>task/index">Aufgaben</a></li>
+            </ul>
+        </nav>
+        <!-- Aufgabenübersicht -->
+        <div>
+            <p class="overview">Aufgabenübersicht</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Titel</th>
+                        <th>Beschreibung</th>
+                        <th>Begin</th>
+                        <th>Ende</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <?php foreach($tasks as $task): ?>
+                      <tr>
+                          <td><?php echo $task->getId(); ?></td>
+                          <td><?php echo $task->getTitle(); ?></td>
+                          <td><?php echo $task->getDesc(); ?></td>
+                          <td><?php echo $task->getBegin(); ?></td>
+                          <td><?php echo $task->getEnd(); ?></td>
+                          <td><?php echo $task->getStatus(); ?></td>
+                      </tr>
+                  <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+        <!-- Aufgabenübersicht -->
+        <ul>
+            <li><a href="<?php echo App::getBaseUrl();?>task/new">Neue Aufgabe</a></li>
+        </ul>
+    </body>
+</html>

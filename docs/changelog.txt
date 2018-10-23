@@ -1,4 +1,10 @@
-Version 0.1.0
+Version 0.2.0 (2018-10-23)
+	added, task can be created
+	added, project can be created
+	update, rename task.phtml to tasks_overview.phtml
+	update, update templates
+	bugfix, fixed minor bugs
+Pre-Version 0.1.0 (2018-10-22)
 	added, changelog
 	bugfix, fixed minor bugs
 	deleted, doku files 

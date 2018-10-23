@@ -37,7 +37,7 @@ class Index extends Base
         echo 'uploadAction';
     }
 
-    public function mainpageAction($params)
+    public function mainAction($params)
     {
       $model = new Project();
       $customer = new Customer();

@@ -22,7 +22,7 @@ class Bootstrap
         $this->_setController($controller);
 
         // action
-        $action = (strlen($action) > 0) ? $action : 'index';
+        $action = (strlen($action) > 0) ? $action : 'main';
         $this->_setAction($action);
 
         // params

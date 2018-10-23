@@ -42,6 +42,39 @@ class Project extends Base
         return $projects;
     }
 
+    public function getProjectById(int $id)
+    {
+        $sql = "
+        SELECT `id`,
+            `title`,
+            `desc`,
+            `begin`,
+            `end`,
+            `status`,
+            `customer_id`,
+            `created_at`
+            FROM `projects`
+            WHERE `id` = $id
+        ";
+        
+        $dbResult = $this->connect()->query($sql);
+
+        $row = $dbResult->fetch(\PDO::FETCH_ASSOC);
+        
+        $project = new ProjectModel();
+            
+        $project->setId($row['id']);
+        $project->setTitle($row['title']);
+        $project->setDesc($row['desc']);
+        $project->setBegin($row['begin']);
+        $project->setEnd($row['end']);
+        $project->setStatus($row['status']);
+        $project->setCustomerId($row['customer_id']);
+        $project->setCreatedAt($row['created_at']);
+        
+        return $project;
+    }
+    
     public function getCustomerProjects(int $id)
     {
         $sql = "
@@ -89,7 +122,8 @@ class Project extends Base
             `end`,
             `status`,
             `customer_id`)
-            VALUES (:title,
+            VALUES (
+                :title,
                 :desc,
                 :begin,
                 :end,
@@ -104,9 +138,9 @@ class Project extends Base
         $stmt->bindParam(':title', $values['title']);
         $stmt->bindParam(':desc', $values['desc']);
         $stmt->bindParam(':begin', $values['begin']);
-        $stmt->bindParam('end', $values['end']);
-        $stmt->bindParam('status', $values['status']);
-        $stmt->bindParam('customer_id', $values['customer_id']);
+        $stmt->bindParam(':end', $values['end']);
+        $stmt->bindParam(':status', $values['status']);
+        $stmt->bindParam(':customer_id', $values['customerId']);
 
         $stmt->execute();
     }

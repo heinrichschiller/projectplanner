@@ -28,7 +28,7 @@ class Customer extends Base
 
         $customer->add($_POST);
 
-        header('Location: http://projektmanager.localhost/customer/index');
+        header('Location: '. \App::getBaseUrl() . 'customer/index');
     }
 
     public function viewAction($params)
@@ -37,7 +37,7 @@ class Customer extends Base
         $project = new ProjectResource();
         $task = new TaskResource();
 
-        $customers = $customer->getCustomer($params);
+        $customers = $customer->getCustomer($params['id']);
         $projects = $project->getCustomerProjects($params['id']);
         $tasks = $task->getCustomerTasks($params['id']);
 

@@ -1,72 +1,84 @@
 <!DOCTYPE html>
 <html lang="de">
-    <head>
-        <meta charset="utf8">
-        <title>Hauptseite</title>
-        <link href="<?php echo \App::getBaseUrl(); ?>skin/css/style.css" rel="stylesheet">
-    </head>
-    <body>
-        <header>
-            <h1>Project-Planner</h1>
-        </header>
-        <nav>
-            <ul>
-                <li><a href="<?php echo \App::getBaseUrl(); ?>index/mainpage">Home</a></li>
-                <li><a href="<?php echo \App::getBaseUrl(); ?>customer/index">Kunden</a></li>
-                <li><a href="<?php echo \App::getBaseUrl(); ?>project/index">Projekte</a></li>
-                <li><a href="<?php echo \App::getBaseUrl(); ?>task/index">Aufgaben</a></li>
-            </ul>
-        </nav>
-        <div>
-            <form method="post">
-                <br>
-                <div>
-                    <h2>Neues Projekt</h2>
-                </div>
-                <div>
-                    <label for="name">Titel:</label>
-                    <input type="text" name="name" id="name">
-                </div>
-                <div>
-                    <label for="customer">Kunde:</label>
-                    <select id="customer">
-                        <option>Bitte wählen ...</option>
-                        <option>digital-connect GmbH</option>
-                        <option>Max Mustermann GmbH</option>
-                        <option>Atomkraftwerk Springfield</option>
-                        <option>Washington Museum</option>
-                    </select>
-                <div>
-                    <label for="customer">Ansprechp.:</label>
-                    <select id="customer">
-                        <option>Bitte wählen ...</option>
-                        <option>digital-connect GmbH</option>
-                        <option>Max Mustermann GmbH</option>
-                        <option>Atomkraftwerk Springfield</option>
-                        <option>Washington Museum</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="desc">Beschreibung:</label>
-                    <textarea name="desc" id="desc"></textarea>
-                </div>
-                <div>
-                    <label for="begin">Anfang:</label>
-                    <input type="text" name="begin" id="begin">
-                    <label for="end">Ende:</label>
-                    <input type="text" name="end" id="end">
-                </div>
-                <div>
-                    <label for="status">Status:</label>
-                    <select id="status">
-                        <option>aktiv</option>
-                        <option>beendet</option>
-                    </select>
-                </div>
-                <button>Anlegen</button>
-                <button>Abbrechen</button>
-            </form>
-        </div>
-    </body>
+	<head>
+		<meta charset="utf8">
+		<title>Hauptseite</title>
+		<link href="<?php echo \App::getBaseUrl(); ?>skin/css/style.css" rel="stylesheet">
+	</head>
+	<body>
+    	<header>
+    		<h1>Project-Planner</h1>
+    	</header>
+    	<nav>
+    		<ul>
+    			<li><a href="<?php echo \App::getBaseUrl(); ?>index/main">Home</a></li>
+    			<li><a href="<?php echo \App::getBaseUrl(); ?>customer/index">Kunden</a></li>
+    			<li><a href="<?php echo \App::getBaseUrl(); ?>project/index">Projekte</a></li>
+    			<li><a href="<?php echo \App::getBaseUrl(); ?>task/index">Aufgaben</a></li>
+    		</ul>
+    	</nav>
+		<div><br>
+			<h2>Projektübersicht</h2>
+		</div>
+		<div>
+			<label for="name">Titel:</label>
+			<input type="text" value="<?php echo $project->getTitle(); ?>" id="name" disabled>
+		</div>
+		<div>
+			<label for="customer">Kunde:</label>
+			<input type="text" value="<?php echo $customer->getName(); ?>" id="customer" disabled>
+		</div>
+		<div>
+			<label for="customer">Ansprechp.:</label>
+			<input type="text" value="<?php echo $customer->getFirstname() . '&nbsp;' . $customer->getLastname(); ?>" id="name" disabled>
+		</div>
+		<div>
+			<label for="desc">Beschreibung:</label>
+			<textarea id="desc" disabled><?php echo $project->getDesc(); ?>"</textarea>
+		</div>
+		<div>
+			<label for="begin">Anfang:</label>
+			<input type="text" value="<?php echo $project->getBegin(); ?>" id="begin">
+			<label for="end">Ende:</label>
+			<input type="text" value="<?php echo $project->getEnd(); ?>" id="end">
+		</div>
+		<div>
+			<label for="status">Status:</label>
+			<input type="text" value="<?php echo $project->getStatus(); ?>" id="name" disabled>
+		</div>
+		<!-- Aufgabenübersicht -->
+		<div>
+			<p class="overview">Aufgabenübersicht</p>
+			<table>
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Titel</th>
+						<th>Beschreibung</th>
+						<th>Begin</th>
+						<th>Ende</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach($tasks as $task): ?>
+                    <tr>
+						<td><?php echo $task->getId(); ?></td>
+						<td><?php echo $task->getTitle(); ?></td>
+						<td><?php echo $task->getDesc(); ?></td>
+						<td><?php echo $task->getBegin(); ?></td>
+						<td><?php echo $task->getEnd(); ?></td>
+						<td><?php echo $task->getStatus(); ?></td>
+					</tr>
+                    <?php endforeach; ?>
+               </tbody>
+		</table>
+		</div>
+		<!-- Aufgabenübersicht -->
+		<div>
+			<button>Anlegen</button>
+			<button>Abbrechen</button>
+		</div>
+	</body>
 </html>
 
