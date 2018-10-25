@@ -5,11 +5,14 @@ namespace Controller;
 use Model\Resource\Customer as CustomerResource;
 use Model\Resource\Project as ProjectResource;
 use Model\Resource\Task as TaskResource;
+use Session\User;
 
 class Customer extends Base
 {
     public function indexAction($params)
     {
+        User::checkLogin();
+
         $customer = new CustomerResource();
 
         $customers = $customer->getCustomers();
@@ -19,11 +22,15 @@ class Customer extends Base
 
     public function newAction($params)
     {
+        User::checkLogin();
+
         echo $this->render('customer.phtml');
     }
 
     public function addAction($params)
     {
+        User::checkLogin();
+
         $customer = new CustomerResource();
 
         $customer->add($_POST);
@@ -33,6 +40,8 @@ class Customer extends Base
 
     public function viewAction($params)
     {
+        User::checkLogin();
+        
         $customer = new CustomerResource();
         $project = new ProjectResource();
         $task = new TaskResource();
