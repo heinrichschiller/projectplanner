@@ -15,6 +15,13 @@
                 <li><a href="<?php echo \App::getBaseUrl(); ?>customer/index">Kunden</a></li>
                 <li><a href="<?php echo \App::getBaseUrl(); ?>project/index">Projekte</a></li>
                 <li><a href="<?php echo \App::getBaseUrl(); ?>task/index">Aufgaben</a></li>
+                <li>
+                    <?php if(\Session\User::isLoggedIn()): ?>
+                        <a href="<?php echo \App::getBaseUrl(); ?>index/login">Sign out</a>
+                    <?php else: ?>
+                        <a href="<?php echo \App::getBaseUrl(); ?>index/login">Sign in</a>
+                    <?php endif; ?>
+                </li>
             </ul>
         </nav>
         <!-- Kundenübersicht -->

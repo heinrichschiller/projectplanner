@@ -5,54 +5,48 @@ namespace Controller;
 use Model\Resource\Project;
 use Model\Resource\Customer;
 use Model\Resource\Task;
+use Session\User;
 
 class Index extends Base
 {
-    public function indexAction($params)
-    {
-        //$model = new Picture();
-
-        //$pictures = $model->getPictures();
-
-        //echo $this->render('pictures.phtml', array('pictures' => $pictures));
-    }
-
     public function loginAction($params)
     {
-        echo 'loginAction';
-    }
-
-    public function registerAction($params)
-    {
-        echo 'registerAction';
+        if($this->isPost()) {
+            if(User::login($_POST['email'], $_POST['password'])) {
+                header('Location: ' . \App::getBaseUrl());
+            }
+        }
+ 
+        echo $this->render('login.phtml');
     }
 
     public function logoutAction($params)
     {
-        echo 'logoutAction';
-    }
+        User::logout();
 
-    public function uploadAction($params)
-    {
-        echo 'uploadAction';
+        $url = \App::getBaseUrl() . 'index/login';
+        
+        header("Location: $url");
     }
 
     public function mainAction($params)
     {
-      $model = new Project();
-      $customer = new Customer();
-      $task = new Task();
+        User::checkLogin();
 
-      $projects = $model->getProjects();
-      $customers = $customer->getCustomers();
-      $tasks = $task->getTasks();
+        $model = new Project();
+        $customer = new Customer();
+        $task = new Task();
 
-      $list = [
-          'projects' => $projects,
-          'customers' => $customers,
-          'tasks' => $tasks
-      ];
+        $projects = $model->getProjects();
+        $customers = $customer->getCustomers();
+        $tasks = $task->getTasks();
 
-      echo $this->render('mainpage.phtml',$list);
+        $list = [
+            'projects' => $projects,
+            'customers' => $customers,
+            'tasks' => $tasks
+        ];
+
+        echo $this->render('mainpage.phtml',$list);
     }
 }
