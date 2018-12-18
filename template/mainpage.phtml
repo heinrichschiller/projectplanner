@@ -12,7 +12,7 @@
         <nav>
             <ul>
                 <li><a href="<?php echo \App::getBaseUrl(); ?>index/main">Home</a></li>
-                <li><a href="<?php echo \App::getBaseUrl(); ?>customer/index">Kunden</a></li>
+                <li><a href="<?php echo \App::getBaseUrl(); ?>contact/index">Kontakte</a></li>
                 <li><a href="<?php echo \App::getBaseUrl(); ?>project/index">Projekte</a></li>
                 <li><a href="<?php echo \App::getBaseUrl(); ?>task/index">Aufgaben</a></li>
                 <li>
@@ -26,7 +26,7 @@
         </nav>
         <!-- Kundenübersicht -->
         <div>
-            <p class="overview">Kundenübersicht</p>
+            <p class="overview">Kontaktübersicht</p>
             <table>
                 <thead>
                     <tr>
@@ -38,14 +38,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                  <?php foreach($customers as $customer): ?>
+                  <?php foreach($contacts as $contact): ?>
                       <tr>
-                          <td><?php echo $customer->getId(); ?></td>
-                          <td><?php echo $customer->getName(); ?></td>
-                          <td><?php echo $customer->getFirstname() . '&nbsp;'
-                            . $customer->getLastname(); ?></td>
-                          <td><?php echo $customer->getCity(); ?></td>
-                          <td><?php echo $customer->getPhone(); ?></td>
+                          <td><?php echo $contact->getId(); ?></td>
+                          <td><?php echo $contact->getName(); ?></td>
+                          <td><?php echo $contact->getFirstname() . '&nbsp;'
+                            . $contact->getLastname(); ?></td>
+                          <td><?php echo $contact->getCity(); ?></td>
+                          <td><?php echo $contact->getPhone(); ?></td>
                       </tr>
                   <?php endforeach; ?>
                 </tbody>

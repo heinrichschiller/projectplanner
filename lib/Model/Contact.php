@@ -2,7 +2,7 @@
 
 namespace Model;
 
-class Customer
+class Contact
 {
     private $_id = 0;
     private $_name = '';

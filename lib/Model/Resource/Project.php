@@ -15,7 +15,7 @@ class Project extends Base
             `begin`,
             `end`,
             `status`,
-            `customer_id`,
+            `contact_id`,
             `created_at`
             FROM `projects`
         ';
@@ -33,7 +33,7 @@ class Project extends Base
             $project->setBegin($row['begin']);
             $project->setEnd($row['end']);
             $project->setStatus($row['status']);
-            $project->setCustomerId($row['customer_id']);
+            $project->setContactId($row['contact_id']);
             $project->setCreatedAt($row['created_at']);
 
             $projects[] = $project;
@@ -51,31 +51,31 @@ class Project extends Base
             `begin`,
             `end`,
             `status`,
-            `customer_id`,
+            `contact_id`,
             `created_at`
             FROM `projects`
             WHERE `id` = $id
         ";
-        
+
         $dbResult = $this->connect()->query($sql);
 
         $row = $dbResult->fetch(\PDO::FETCH_ASSOC);
-        
+
         $project = new ProjectModel();
-            
+
         $project->setId($row['id']);
         $project->setTitle($row['title']);
         $project->setDesc($row['desc']);
         $project->setBegin($row['begin']);
         $project->setEnd($row['end']);
         $project->setStatus($row['status']);
-        $project->setCustomerId($row['customer_id']);
+        $project->setContactId($row['contact_id']);
         $project->setCreatedAt($row['created_at']);
-        
+
         return $project;
     }
-    
-    public function getCustomerProjects(int $id)
+
+    public function getContactProjects(int $id)
     {
         $sql = "
         SELECT `id`,

@@ -10,10 +10,10 @@ class Task
     private $_begin = '';
     private $_end = '';
     private $_status = '';
-    private $_customer_id = '';
-    private $_project_id = '';
-    private $_created_at = '';
-    private $_updated_at = '';
+    private $_contactId = '';
+    private $_projectId = '';
+    private $_createdAt = '';
+    private $_updatedAt = '';
 
 
     /**
@@ -33,9 +33,9 @@ class Task
      *
      * @return self
      */
-    public function setId($_id)
+    public function setId($id)
     {
-        $this->_id = $_id;
+        $this->_id = $id;
 
         return $this;
     }
@@ -57,9 +57,9 @@ class Task
      *
      * @return self
      */
-    public function setTitle($_title)
+    public function setTitle($title)
     {
-        $this->_title = $_title;
+        $this->_title = $title;
 
         return $this;
     }
@@ -81,9 +81,9 @@ class Task
      *
      * @return self
      */
-    public function setDesc($_desc)
+    public function setDesc($desc)
     {
-        $this->_desc = $_desc;
+        $this->_desc = $desc;
 
         return $this;
     }
@@ -105,9 +105,9 @@ class Task
      *
      * @return self
      */
-    public function setBegin($_begin)
+    public function setBegin($begin)
     {
-        $this->_begin = $_begin;
+        $this->_begin = $begin;
 
         return $this;
     }
@@ -129,9 +129,9 @@ class Task
      *
      * @return self
      */
-    public function setEnd($_end)
+    public function setEnd($end)
     {
-        $this->_end = $_end;
+        $this->_end = $end;
 
         return $this;
     }
@@ -153,9 +153,9 @@ class Task
      *
      * @return self
      */
-    public function setStatus($_status)
+    public function setStatus($status)
     {
-        $this->_status = $_status;
+        $this->_status = $status;
 
         return $this;
     }
@@ -165,21 +165,21 @@ class Task
      *
      * @return mixed
      */
-    public function getCustomerId()
+    public function getContactId()
     {
-        return $this->_customer_id;
+        return $this->_contactId;
     }
 
     /**
      * Set the value of Customer Id
      *
-     * @param mixed _customer_id
+     * @param mixed customerId
      *
      * @return self
      */
-    public function setCustomerId($_customer_id)
+    public function setContactId($contactId)
     {
-        $this->_customer_id = $_customer_id;
+        $this->_contactId = $contactId;
 
         return $this;
     }
@@ -191,19 +191,19 @@ class Task
      */
     public function getProjectId()
     {
-        return $this->_project_id;
+        return $this->_projectId;
     }
 
     /**
      * Set the value of Project Id
      *
-     * @param mixed _project_id
+     * @param mixed _projectId
      *
      * @return self
      */
-    public function setProjectId($_project_id)
+    public function setProjectId($projectId)
     {
-        $this->_project_id = $_project_id;
+        $this->_projectId = $projectId;
 
         return $this;
     }
@@ -215,7 +215,7 @@ class Task
      */
     public function getCreatedAt()
     {
-        return $this->_created_at;
+        return $this->_createdAt;
     }
 
     /**
@@ -225,9 +225,9 @@ class Task
      *
      * @return self
      */
-    public function setCreatedAt($_created_at)
+    public function setCreatedAt($createdAt)
     {
-        $this->_created_at = $_created_at;
+        $this->_createdAt = $createdAt;
 
         return $this;
     }
@@ -239,7 +239,7 @@ class Task
      */
     public function getUpdatedAt()
     {
-        return $this->_updated_at;
+        return $this->_updatedAt;
     }
 
     /**
@@ -249,9 +249,9 @@ class Task
      *
      * @return self
      */
-    public function setUpdatedAt($_updated_at)
+    public function setUpdatedAt($updatedAt)
     {
-        $this->_updated_at = $_updated_at;
+        $this->_updatedAt = $updatedAt;
 
         return $this;
     }

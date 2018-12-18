@@ -10,7 +10,7 @@ class Project
     private $_begin = '';
     private $_end = '';
     private $_status = '';
-    private $_customerId = '';
+    private $_contactId = '';
     private $_createdAt = '';
 
 
@@ -163,9 +163,9 @@ class Project
      *
      * @return mixed
      */
-    public function getCustomerId()
+    public function getContactId()
     {
-        return $this->_customerId;
+        return $this->_contactId;
     }
 
     /**
@@ -175,9 +175,9 @@ class Project
      *
      * @return self
      */
-    public function setCustomerId($_customerId)
+    public function setContactId($_contactId)
     {
-        $this->_customerId = $_customerId;
+        $this->_contactId = $_contactId;
 
         return $this;
     }

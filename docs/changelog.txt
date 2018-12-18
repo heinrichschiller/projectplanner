@@ -1,3 +1,6 @@
+Pre-Release 0.4.0
+	added, contact functionality
+	removed, customer functionality
 Release 0.3.0 (2018-10-25)
 	added, login and session
 Version 0.2.0 (2018-10-23)
@@ -9,4 +12,4 @@ Version 0.2.0 (2018-10-23)
 Version 0.1.0 (2018-10-22)
 	added, changelog
 	bugfix, fixed minor bugs
-	deleted, doku files 
+	deleted, doku files

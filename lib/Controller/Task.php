@@ -2,7 +2,7 @@
 
 namespace Controller;
 
-use Model\Resource\Customer as CustomerResource;
+use Model\Resource\Contact as ContactResource;
 use Model\Resource\Project as ProjectResource;
 use Model\Resource\Task as TaskResource;
 use Session\User;
@@ -19,33 +19,33 @@ class Task extends Base
 
         echo $this->render('tasks_overview.phtml', array('tasks' => $tasks));
     }
-    
+
     public function newAction()
     {
         User::checkLogin();
 
-        $customers = new CustomerResource();
+        $contacts = new ContactResource();
         $projects  = new ProjectResource();
-        
-        $customerList = $customers->getCustomers();
+
+        $contactList = $contacts->getContacts();
         $projectsList = $projects->getProjects();
-        
+
         $list = [
-            'customers' => $customerList,
+            'contacts' => $contactList,
             'projects'  => $projectsList
         ];
-        
+
         echo $this->render('task.phtml', $list);
     }
-    
-    public function addAction() 
+
+    public function addAction()
     {
         User::checkLogin();
-        
+
         $task = new TaskResource();
-        
+
         $task->add($_POST);
-        
+
         header('Location: ' . \App::getBaseUrl() . 'task/index');
     }
 }

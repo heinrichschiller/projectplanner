@@ -2,9 +2,9 @@
 
 namespace Controller;
 
-use Model\Resource\Project  as ProjectResource;
-use Model\Resource\Customer as CustomerResource;
-use Model\Resource\Task     as TaskResource;
+use Model\Resource\Project as ProjectResource;
+use Model\Resource\Contact as ContactResource;
+use Model\Resource\Task    as TaskResource;
 use Session\User;
 
 class Project extends Base
@@ -24,11 +24,11 @@ class Project extends Base
     {
         User::checkLogin();
 
-        $customer = new CustomerResource();
+        $contact = new ContactResource();
 
-        $customerList = $customer->getCustomers();
+        $contactList = $contact->getContacts();
 
-        echo $this->render('project.phtml', array('customers' => $customerList));
+        echo $this->render('project.phtml', array('contacts' => $contactList));
     }
 
     public function addAction()
@@ -45,23 +45,23 @@ class Project extends Base
     public function viewAction($params)
     {
         User::checkLogin();
-        
-        $customer = new CustomerResource();
+
+        $contact = new ContactResource();
         $project = new ProjectResource();
         $task = new TaskResource();
-        
+
         $projectList = $project->getProjectById($params['id']);
 
-        $id = $projectList->getCustomerId();
-        $customerList = $customer->getCustomer($id);
-        $taskList = $task->getCustomerTasks($id);
+        $id = $projectList->getContactId();
+        $contactList = $contact->getContact($id);
+        $taskList = $task->getContactTasks($id);
 
         $list = [
-            'customer' => $customerList,
+            'contact' => $contactList,
             'project'  => $projectList,
             'tasks'    => $taskList
         ];
-        
+
         echo $this->render('project_overview.phtml', $list);
     }
 }

@@ -12,14 +12,14 @@
         <nav>
             <ul>
                 <li><a href="<?php echo \App::getBaseUrl(); ?>index/main">Home</a></li>
-                <li><a href="<?php echo \App::getBaseUrl(); ?>customer/index">Kunden</a></li>
+                <li><a href="<?php echo \App::getBaseUrl(); ?>contact/index">Kontakte</a></li>
                 <li><a href="<?php echo \App::getBaseUrl(); ?>project/index">Projekte</a></li>
                 <li><a href="<?php echo \App::getBaseUrl(); ?>task/index">Aufgaben</a></li>
             </ul>
         </nav>
         <!-- Kundenübersicht -->
         <div>
-            <p class="overview">Kundenübersicht</p>
+            <p class="overview">Kontaktübersicht</p>
             <table>
                 <thead>
                     <tr>
@@ -32,17 +32,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                  <?php foreach($customers as $customer): ?>
+                  <?php foreach($contacts as $contact): ?>
                       <tr>
-                          <td><?php echo $customer->getId(); ?></td>
-                          <td><?php echo $customer->getName(); ?></td>
-                          <td><?php echo $customer->getFirstname() . '&nbsp;'
-                            . $customer->getLastname(); ?></td>
-                          <td><?php echo $customer->getCity(); ?></td>
-                          <td><?php echo $customer->getPhone(); ?></td>
-                          <td><a class="workaround" href="<?php echo \App::getBaseUrl(); ?>customer/view/id/<?php echo $customer->getId(); ?>">Übersicht</a></td>
-                          <td><a class="workaround" href="<?php echo \App::getBaseUrl(); ?>customer/edit/id/<?php echo $customer->getId(); ?>">Bearbeiten</a></td>
-                          <td><a class="workaround" href="<?php echo \App::getBaseUrl(); ?>customer/delete/id/<?php echo $customer->getId(); ?>">Löschen</a></td>
+                          <td><?php echo $contact->getId(); ?></td>
+                          <td><?php echo $contact->getName(); ?></td>
+                          <td><?php echo $contact->getFirstname() . '&nbsp;'
+                            . $contact->getLastname(); ?></td>
+                          <td><?php echo $contact->getCity(); ?></td>
+                          <td><?php echo $contact->getPhone(); ?></td>
+                          <td><a class="workaround" href="<?php echo \App::getBaseUrl(); ?>contact/view/id/<?php echo $contact->getId(); ?>">Übersicht</a></td>
+                          <td><a class="workaround" href="<?php echo \App::getBaseUrl(); ?>contact/edit/id/<?php echo $contact->getId(); ?>">Bearbeiten</a></td>
+                          <td><a class="workaround" href="<?php echo \App::getBaseUrl(); ?>contact/delete/id/<?php echo $contact->getId(); ?>">Löschen</a></td>
                       </tr>
                   <?php endforeach; ?>
                 </tbody>
@@ -50,7 +50,7 @@
         </div>
         <!-- Kundenübersicht -->
         <ul>
-            <li><a href="<?php echo \App::getBaseUrl(); ?>customer/new">Neuer Kunde</a></li>
+            <li><a href="<?php echo \App::getBaseUrl(); ?>contact/new">Neuer Kontakt</a></li>
         </ul>
     </body>
 </html>

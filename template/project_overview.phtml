@@ -12,7 +12,7 @@
     	<nav>
     		<ul>
     			<li><a href="<?php echo \App::getBaseUrl(); ?>index/main">Home</a></li>
-    			<li><a href="<?php echo \App::getBaseUrl(); ?>customer/index">Kunden</a></li>
+    			<li><a href="<?php echo \App::getBaseUrl(); ?>contact/index">Kontakte</a></li>
     			<li><a href="<?php echo \App::getBaseUrl(); ?>project/index">Projekte</a></li>
     			<li><a href="<?php echo \App::getBaseUrl(); ?>task/index">Aufgaben</a></li>
     		</ul>
@@ -25,12 +25,12 @@
 			<input type="text" value="<?php echo $project->getTitle(); ?>" id="name" disabled>
 		</div>
 		<div>
-			<label for="customer">Kunde:</label>
-			<input type="text" value="<?php echo $customer->getName(); ?>" id="customer" disabled>
+			<label for="contact">Kontakt:</label>
+			<input type="text" value="<?php echo $contact->getName(); ?>" id="contact" disabled>
 		</div>
 		<div>
-			<label for="customer">Ansprechp.:</label>
-			<input type="text" value="<?php echo $customer->getFirstname() . '&nbsp;' . $customer->getLastname(); ?>" id="name" disabled>
+			<label for="contact">Ansprechp.:</label>
+			<input type="text" value="<?php echo $contact->getFirstname() . '&nbsp;' . $contact->getLastname(); ?>" id="name" disabled>
 		</div>
 		<div>
 			<label for="desc">Beschreibung:</label>
@@ -81,4 +81,3 @@
 		</div>
 	</body>
 </html>
-

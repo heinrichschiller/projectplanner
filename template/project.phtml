@@ -12,7 +12,7 @@
         <nav>
             <ul>
                 <li><a href="<?php echo \App::getBaseUrl(); ?>index/main">Home</a></li>
-                <li><a href="<?php echo \App::getBaseUrl(); ?>customer/index">Kunden</a></li>
+                <li><a href="<?php echo \App::getBaseUrl(); ?>contact/index">Kontakte</a></li>
                 <li><a href="<?php echo \App::getBaseUrl(); ?>project/index">Projekte</a></li>
                 <li><a href="<?php echo \App::getBaseUrl(); ?>task/index">Aufgaben</a></li>
             </ul>
@@ -28,14 +28,14 @@
                     <input type="text" name="title" id="name">
                 </div>
                 <div>
-                    <label for="customer">Kunde:</label>
-                    <select id="customer" name="customerId">
-                        <?php foreach ($customers as $customer): ?>
-                        <option value="<?php echo $customer->getId(); ?>"><?php echo $customer->getName(); ?></option>
+                    <label for="contact">Kunde:</label>
+                    <select id="contact" name="contactId">
+                        <?php foreach ($contacts as $contact): ?>
+                        <option value="<?php echo $contact->getId(); ?>"><?php echo $contact->getName(); ?></option>
                         <?php endforeach; ?>
                     </select>
                 <div>
-                    <label for="customer">Ansprechp.:</label>
+                    <label for="contact">Ansprechp.:</label>
                     <input type="text" name="contactPerson" id="name">
                 </div>
                 <div>

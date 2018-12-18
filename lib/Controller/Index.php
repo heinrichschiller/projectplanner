@@ -3,7 +3,7 @@
 namespace Controller;
 
 use Model\Resource\Project;
-use Model\Resource\Customer;
+use Model\Resource\Contact;
 use Model\Resource\Task;
 use Session\User;
 
@@ -16,7 +16,7 @@ class Index extends Base
                 header('Location: ' . \App::getBaseUrl());
             }
         }
- 
+
         echo $this->render('login.phtml');
     }
 
@@ -25,7 +25,7 @@ class Index extends Base
         User::logout();
 
         $url = \App::getBaseUrl() . 'index/login';
-        
+
         header("Location: $url");
     }
 
@@ -34,16 +34,16 @@ class Index extends Base
         User::checkLogin();
 
         $model = new Project();
-        $customer = new Customer();
+        $contact = new Contact();
         $task = new Task();
 
         $projects = $model->getProjects();
-        $customers = $customer->getCustomers();
+        $contacts = $contact->getContacts();
         $tasks = $task->getTasks();
 
         $list = [
             'projects' => $projects,
-            'customers' => $customers,
+            'contacts' => $contacts,
             'tasks' => $tasks
         ];
 

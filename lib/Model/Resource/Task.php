@@ -15,7 +15,7 @@ class Task extends Base
             `begin`,
             `end`,
             `status`,
-            `customer_id`,
+            `contact_id`,
             `project_id`,
             `created_at`,
             `updated_at`
@@ -35,7 +35,7 @@ class Task extends Base
             $task->setBegin($row['begin']);
             $task->setEnd($row['end']);
             $task->setStatus($row['status']);
-            $task->setCustomerId($row['customer_id']);
+            $task->setContactId($row['contact_id']);
             $task->setProjectId($row['project_id']);
             $task->setCreatedAt($row['created_at']);
             $task->setUpdatedAt($row['updated_at']);
@@ -46,7 +46,7 @@ class Task extends Base
         return $taskList;
     }
 
-    public function getCustomerTasks(int $id)
+    public function getContactTasks(int $id)
     {
         $sql = "
         SELECT `id`,
@@ -55,12 +55,12 @@ class Task extends Base
             `begin`,
             `end`,
             `status`,
-            `customer_id`,
+            `contact_id`,
             `project_id`,
             `created_at`,
             `updated_at`
             FROM `tasks`
-            WHERE `customer_id` = $id
+            WHERE `contact_id` = $id
         ";
 
         $dbResult = $this->connect()->query($sql);
@@ -76,7 +76,7 @@ class Task extends Base
             $task->setBegin($row['begin']);
             $task->setEnd($row['end']);
             $task->setStatus($row['status']);
-            $task->setCustomerId($row['customer_id']);
+            $task->setContactId($row['contact_id']);
             $task->setProjectId($row['project_id']);
             $task->setCreatedAt($row['created_at']);
             $task->setUpdatedAt($row['updated_at']);
@@ -86,7 +86,7 @@ class Task extends Base
 
         return $taskList;
     }
-    
+
     public function add(array $values)
     {
         $sql = "
@@ -96,7 +96,7 @@ class Task extends Base
             `begin`,
             `end`,
             `status`,
-            `customer_id`,
+            `contact_id`,
             `project_id`)
             VALUES (
                 :title,
@@ -104,22 +104,22 @@ class Task extends Base
                 :begin,
                 :end,
                 :status,
-                :customer_id,
+                :contact_id,
                 :project_id)
         ";
-        
+
         $con = $this->connect();
-        
+
         $stmt = $con->prepare($sql);
-        
+
         $stmt->bindParam(':title', $values['title']);
         $stmt->bindParam(':desc', $values['desc']);
         $stmt->bindParam(':begin', $values['begin']);
         $stmt->bindParam(':end', $values['end']);
         $stmt->bindParam(':status', $values['status']);
-        $stmt->bindParam(':customer_id', $values['customerId']);
+        $stmt->bindParam(':contact_id', $values['contactId']);
         $stmt->bindParam(':project_id', $values['projectId']);
-        
+
         $stmt->execute();
     }
 }
