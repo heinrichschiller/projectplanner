@@ -84,10 +84,10 @@ class Project extends Base
             `begin`,
             `end`,
             `status`,
-            `customer_id`,
+            `contact_id`,
             `created_at`
             FROM `projects`
-            WHERE `customer_id` = $id
+            WHERE `contact_id` = $id
         ";
 
         $dbResult = $this->connect()->query($sql);
@@ -103,7 +103,7 @@ class Project extends Base
             $project->setBegin($row['begin']);
             $project->setEnd($row['end']);
             $project->setStatus($row['status']);
-            $project->setCustomerId($row['customer_id']);
+            $project->setContactId($row['contact_id']);
             $project->setCreatedAt($row['created_at']);
 
             $projects[] = $project;
@@ -121,16 +121,16 @@ class Project extends Base
             `begin`,
             `end`,
             `status`,
-            `customer_id`)
+            `contact_id`)
             VALUES (
                 :title,
                 :desc,
                 :begin,
                 :end,
                 :status,
-                :customer_id)
+                :contact_id)
         ";
-
+echo '<pre>';var_dump($values);
         $con = $this->connect();
 
         $stmt = $con->prepare($sql);
@@ -140,7 +140,7 @@ class Project extends Base
         $stmt->bindParam(':begin', $values['begin']);
         $stmt->bindParam(':end', $values['end']);
         $stmt->bindParam(':status', $values['status']);
-        $stmt->bindParam(':customer_id', $values['customerId']);
+        $stmt->bindParam(':contact_id', $values['contactId']);
 
         $stmt->execute();
     }

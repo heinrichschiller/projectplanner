@@ -27,7 +27,7 @@ class Project extends Base
         $contact = new ContactResource();
 
         $contactList = $contact->getContacts();
-
+//var_dump($contactList);
         echo $this->render('project.phtml', array('contacts' => $contactList));
     }
 

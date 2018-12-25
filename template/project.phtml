@@ -28,10 +28,10 @@
                     <input type="text" name="title" id="name">
                 </div>
                 <div>
-                    <label for="contact">Kunde:</label>
+                    <label for="contact">Kontakt:</label>
                     <select id="contact" name="contactId">
-                        <?php foreach ($contacts as $contact): ?>
-                        <option value="<?php echo $contact->getId(); ?>"><?php echo $contact->getName(); ?></option>
+                        <?php foreach ($contacts as $contact): var_dump($contact);?>
+                        <option value="<?php echo $contact->getId(); ?>"><?= $contact->getFirstname() . ' ' . $contact->getLastname(); ?></option>
                         <?php endforeach; ?>
                     </select>
                 <div>
