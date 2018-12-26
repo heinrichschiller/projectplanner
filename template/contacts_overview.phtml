@@ -6,20 +6,27 @@
         <link href="<?php echo \App::getBaseUrl(); ?>skin/css/style.css" rel="stylesheet">
     </head>
     <body>
-        <header>
-            <h1>Project-Planner</h1>
-        </header>
         <nav>
-            <ul>
+            <ul class="navigation">
                 <li><a href="<?php echo \App::getBaseUrl(); ?>index/main">Home</a></li>
                 <li><a href="<?php echo \App::getBaseUrl(); ?>contact/index">Kontakte</a></li>
                 <li><a href="<?php echo \App::getBaseUrl(); ?>project/index">Projekte</a></li>
                 <li><a href="<?php echo \App::getBaseUrl(); ?>task/index">Aufgaben</a></li>
+                <li>
+                    <?php if(\Session\User::isLoggedIn()): ?>
+                        <a href="<?php echo \App::getBaseUrl(); ?>index/login">Sign out</a>
+                    <?php else: ?>
+                        <a href="<?php echo \App::getBaseUrl(); ?>index/login">Sign in</a>
+                    <?php endif; ?>
+                </li>
             </ul>
         </nav>
-        <!-- Kundenübersicht -->
+        <header>
+            <h1>Project-Planner</h1>
+        </header>
+        <!-- Kontaktübersicht -->
         <div>
-            <p class="overview">Kontaktübersicht</p>
+            <h2>Kontaktübersicht</h2>
             <table>
                 <thead>
                     <tr>
@@ -48,9 +55,9 @@
                 </tbody>
             </table>
         </div>
-        <!-- Kundenübersicht -->
-        <ul>
-            <li><a href="<?php echo \App::getBaseUrl(); ?>contact/new">Neuer Kontakt</a></li>
-        </ul>
+        <!-- Kontaktnübersicht -->
+        <div class="button-row">
+            <a href="<?= \App::getBaseUrl(); ?>contact/new" class="button">Neuer Kontakt</a>
+        </div>
     </body>
 </html>

@@ -2,9 +2,9 @@
 
 namespace Model\Resource;
 
-use \Model\Task as TaskModel;
+use \Model\TaskModel;
 
-class Task extends Base
+class TaskResource extends Base
 {
     public function getTasks()
     {

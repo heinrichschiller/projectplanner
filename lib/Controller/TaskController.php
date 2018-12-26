@@ -2,12 +2,12 @@
 
 namespace Controller;
 
-use Model\Resource\Contact as ContactResource;
-use Model\Resource\Project as ProjectResource;
-use Model\Resource\Task as TaskResource;
+use Model\Resource\ContactResource;
+use Model\Resource\ProjectResource;
+use Model\Resource\TaskResource;
 use Session\User;
 
-class Task extends Base
+class TaskController extends Base
 {
     public function indexAction()
     {

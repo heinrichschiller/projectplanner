@@ -2,7 +2,7 @@
 
 namespace Model;
 
-class Project
+class ProjectModel
 {
     private $_id = 0;
     private $_title = '';

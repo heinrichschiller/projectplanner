@@ -1,61 +1,84 @@
 @charset "UTF-8";
 
-header {
-    height: 6em;
-    border: 1px solid black;
+body {
+    background-color: #fefefe;
 }
 
-h1 {
-    margin-left: 1em;
+nav {
+    background-color: rgba(29, 78, 137, 1);
+    display: flex;
+    flex-direction: row wrap;
+    justify-content: flex-start;
 }
 
-table, th, td {
-    border: 1px solid black;
-}
-
-th {
-    width: 4em;
-    background: #999;
-}
-
-ul li {
-    margin-left: 0.2em;
-    padding: 0.2em 1em;;
-    background: gray;
-    border: 1px solid black;
-    border-radius: 0.2em;
+ul {
+    padding: 0px;
     list-style: none;
-    float: left;
-}
-
-a {
-    text-decoration: none;
-    color: white;
-}
-
-label {
-    margin-right: 4em;
-}
-
-.overview {
-    clear: both;
-    font-size: 1.5em;
-}
-
-.workaround {
-    color: blue;
 }
 
 .container {
-
+    width: 40em;
 }
 
-.projects {
-    width: 49%;
-    float:left;
+.container div {
+    margin-top: 1em;
 }
 
-.tasks {
-    width: 49%;
-    float: right;
+.project-title {
+    margin-left: 0.5em;
+}
+
+.navigation {
+    display: flex;
+}
+
+.navigation li {
+    margin-left: 1em;
+}
+.navigation li a {
+    color: #fefefe;
+}
+
+.button-row {
+    margin-top: 1em;
+}
+
+.button {
+    padding: 0.4em;
+    background-color: rgba(29, 78, 137, 1);
+    color: #fefefe;
+    border: 1px solid rgba(29, 78, 137, 1);
+    border-radius: 0.2em;
+    text-decoration: none;
+}
+
+.button:hover {
+    background-color: rgb(9, 58, 107);
+}
+
+header {
+    margin-top: -1.3em;
+    height: 100px;
+    line-height: 100px;
+    background-color: #ddd;
+}
+
+fieldset {
+    border: 1px solid rgba(128,128,128,0.5);
+    border-radius: 0.2em;
+}
+
+table {
+    width: 56em;
+}
+
+th {
+    border: 1px solid black;
+    background-color: black;
+    color: #fefefe;
+}
+
+.contact,
+.contactpartner {
+    width: 11em;
 }

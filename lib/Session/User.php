@@ -2,9 +2,9 @@
 
 namespace Session;
 
-use \Model\Resource\User as UserResource;
+use \Model\Resource\UserResource;
 
-class User 
+class User
 {
     public static function login(string $email, string $passwd)
     {
@@ -21,7 +21,7 @@ class User
         } else {
             $_SESSION['mgs'] = "Sign in failed.";
         }
-        
+
         return false;
     }
 
@@ -30,7 +30,7 @@ class User
         self::initSession();
         session_destroy();
     }
-    
+
     public static function isLoggedIn()
     {
         self::initSession();

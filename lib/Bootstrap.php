@@ -33,7 +33,7 @@ class Bootstrap
 
     private function _setController($controller)
     {
-        $ctrl = sprintf("\\Controller\\%s", ucfirst(strtolower($controller)));
+        $ctrl = sprintf("\\Controller\\%sController", ucfirst(strtolower($controller)));
         $this->_controller = $ctrl;
 
         if(!class_exists($this->_controller)) {

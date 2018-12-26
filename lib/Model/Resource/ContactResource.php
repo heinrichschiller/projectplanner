@@ -2,9 +2,9 @@
 
 namespace Model\Resource;
 
-use \Model\Contact as ContactModel;
+use \Model\ContactModel;
 
-class Contact extends Base
+class ContactResource extends Base
 {
     public function getContacts()
     {
@@ -25,7 +25,7 @@ class Contact extends Base
         $contactList = [];
 
         while ($row = $dbResult->fetch(\PDO::FETCH_ASSOC)) {
-            $contact = new ContactModel;
+            $contact = new ContactModel();
 
             $contact->setId($row['id']);
             $contact->setName($row['name']);
@@ -109,6 +109,22 @@ class Contact extends Base
         $stmt->bindParam(':lastname', $contact->getLastname());
         $stmt->bindParam(':city', $contact->getCity());
         $stmt->bindParam(':phone', $contact->getPhone());
+
+        $stmt->execute();
+    }
+
+    public function delete(int $id)
+    {
+        $sql = "
+        DELETE FROM `contact`
+            WHERE `id`= :id
+        ";
+
+        $con = $this->connect();
+
+        $stmt = $con->prepare($sql);
+
+        $stmt->bindParam(':id', $id);
 
         $stmt->execute();
     }

@@ -2,12 +2,12 @@
 
 namespace Controller;
 
-use Model\Resource\Project as ProjectResource;
-use Model\Resource\Contact as ContactResource;
-use Model\Resource\Task    as TaskResource;
+use Model\Resource\ProjectResource;
+use Model\Resource\ContactResource;
+use Model\Resource\TaskResource;
 use Session\User;
 
-class Project extends Base
+class ProjectController extends Base
 {
     public function indexAction()
     {
@@ -27,7 +27,7 @@ class Project extends Base
         $contact = new ContactResource();
 
         $contactList = $contact->getContacts();
-//var_dump($contactList);
+
         echo $this->render('project.phtml', array('contacts' => $contactList));
     }
 

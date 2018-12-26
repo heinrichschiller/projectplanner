@@ -2,7 +2,7 @@
 
 namespace Model;
 
-class Task
+class TaskModel
 {
     private $_id = 0;
     private $_title = '';

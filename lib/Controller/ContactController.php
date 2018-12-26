@@ -2,12 +2,12 @@
 
 namespace Controller;
 
-use Model\Resource\Contact as ContactResource;
-use Model\Resource\Project as ProjectResource;
-use Model\Resource\Task as TaskResource;
+use Model\Resource\ContactResource;
+use Model\Resource\ProjectResource;
+use Model\Resource\TaskResource;
 use Session\User;
 
-class Contact extends Base
+class ContactController extends Base
 {
     public function indexAction($params)
     {
@@ -57,5 +57,15 @@ class Contact extends Base
         ];
 
         echo $this->render('contact_overview.phtml', $list);
+    }
+
+    public function deleteAction($params)
+    {
+        User::checkLogin();
+
+        $contact = new ContactResource();
+        $contact->delete($params['id']);
+
+        header('Location: '. \App::getBaseUrl() . 'contact/index');
     }
 }
