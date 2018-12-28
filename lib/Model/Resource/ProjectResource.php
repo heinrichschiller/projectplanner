@@ -130,7 +130,7 @@ class ProjectResource extends Base
                 :status,
                 :contact_id)
         ";
-echo '<pre>';var_dump($values);
+
         $con = $this->connect();
 
         $stmt = $con->prepare($sql);

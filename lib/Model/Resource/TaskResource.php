@@ -9,17 +9,19 @@ class TaskResource extends Base
     public function getTasks()
     {
         $sql = '
-        SELECT `id`,
-            `title`,
-            `desc`,
-            `begin`,
-            `end`,
-            `status`,
-            `contact_id`,
-            `project_id`,
-            `created_at`,
-            `updated_at`
-            FROM `tasks`
+        SELECT `tasks`.`id`,
+	       `tasks`.`title`,
+           `tasks`.`desc`,
+           `tasks`.`begin`,
+           `tasks`.`end`,
+           `tasks`.`status`,
+           `tasks`.`contact_id`,
+           `tasks`.`project_id`,
+           `tasks`.`created_at`,
+           `tasks`.`updated_at`,
+           `projects`.`title` as ptitle
+           FROM `tasks`
+           LEFT JOIN `projects` ON `projects`.`id` = `tasks`.`project_id`;
         ';
 
         $dbResult = $this->connect()->query($sql);
@@ -39,6 +41,7 @@ class TaskResource extends Base
             $task->setProjectId($row['project_id']);
             $task->setCreatedAt($row['created_at']);
             $task->setUpdatedAt($row['updated_at']);
+            $task->setProjectTitle($row['ptitle']);
 
             $taskList[] = $task;
         }
@@ -60,7 +63,7 @@ class TaskResource extends Base
             `created_at`,
             `updated_at`
             FROM `tasks`
-            WHERE `contact_id` = $id
+            WHERE `project_id` = $id
         ";
 
         $dbResult = $this->connect()->query($sql);
@@ -120,6 +123,21 @@ class TaskResource extends Base
         $stmt->bindParam(':contact_id', $values['contactId']);
         $stmt->bindParam(':project_id', $values['projectId']);
 
+        $stmt->execute();
+    }
+
+    public function delete(int $id)
+    {
+        $sql = "
+        DELETE FROM `tasks`
+            WHERE `id` = :id
+        ";
+
+        $con = $this->connect();
+
+        $stmt = $con->prepare($sql);
+
+        $stmt->bindParam(':id', $id);
         $stmt->execute();
     }
 }

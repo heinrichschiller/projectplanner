@@ -54,7 +54,7 @@ class ProjectController extends Base
 
         $id = $projectList->getContactId();
         $contactList = $contact->getContact($id);
-        $taskList = $task->getContactTasks($id);
+        $taskList = $task->getContactTasks($params['id']);
 
         $list = [
             'contact' => $contactList,

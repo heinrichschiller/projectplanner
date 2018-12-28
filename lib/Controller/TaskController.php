@@ -48,4 +48,15 @@ class TaskController extends Base
 
         header('Location: ' . \App::getBaseUrl() . 'task/index');
     }
+
+    public function deleteAction(array $params)
+    {
+        User::checkLogin();
+
+        $task = new TaskResource();
+
+        $task->delete($params['id']);
+
+        header('Location: ' . \App::getBaseUrl() . 'task/index');
+    }
 }

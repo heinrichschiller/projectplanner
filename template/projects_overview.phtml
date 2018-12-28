@@ -8,7 +8,7 @@
     <body>
         <nav>
             <ul class="navigation">
-                <li><a href="<?= \App::getBaseUrl(); ?>index/main">Home</a></li>
+                <li><a href="<?= \App::getBaseUrl(); ?>index/main">Start</a></li>
                 <li><a href="<?= \App::getBaseUrl(); ?>contact/index">Kontakte</a></li>
                 <li><a href="<?= \App::getBaseUrl(); ?>project/index">Projekte</a></li>
                 <li><a href="<?= \App::getBaseUrl(); ?>task/index">Aufgaben</a></li>
@@ -36,7 +36,7 @@
                         <th>Ende</th>
                         <th>Status</th>
                         <th>Erstellt am</th>
-                        <th colspan="3">Aktionen</th>
+                        <th colspan="2">Aktionen</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,7 +50,6 @@
                           <td><?= $project->getCreatedAt(); ?></td>
                           <td><a href="<?php echo \App::getBaseUrl(); ?>project/view/id/<?= $project->getId(); ?>">Übersicht</a></td>
                           <td><a href="<?php echo \App::getBaseUrl(); ?>project/edit/id/<?= $project->getId(); ?>">Bearbeiten</a></td>
-                          <td><a href="<?php echo \App::getBaseUrl(); ?>project/delete/id/<?= $project->getId(); ?>">Löschen</a></td>
                       </tr>
                   <?php endforeach; ?>
                 </tbody>

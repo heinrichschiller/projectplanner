@@ -8,7 +8,7 @@
     <body>
         <nav>
             <ul class="navigation">
-                <li><a href="<?php echo \App::getBaseUrl(); ?>index/main">Home</a></li>
+                <li><a href="<?php echo \App::getBaseUrl(); ?>index/main">Start</a></li>
                 <li><a href="<?php echo \App::getBaseUrl(); ?>contact/index">Kontakte</a></li>
                 <li><a href="<?php echo \App::getBaseUrl(); ?>project/index">Projekte</a></li>
                 <li><a href="<?php echo \App::getBaseUrl(); ?>task/index">Aufgaben</a></li>
@@ -26,7 +26,12 @@
         </header>
         <!-- Kontaktnübersicht -->
         <div>
-            <h2>Kontaktübersicht</h2>
+            <div>
+                <h2>Kontaktübersicht
+                    <span class="element-pos-right"><a class="button-light" href="<?= \App::getBaseUrl(); ?>contact/new" title="Neuen Kontakt anlegen.">+</a></span>
+                    <hr>
+                </h2>
+            </div>
             <table>
                 <thead>
                     <tr>
@@ -41,15 +46,14 @@
                 <tbody>
                   <?php foreach($contacts as $contact): ?>
                       <tr>
-                          <td><?php echo $contact->getId(); ?></td>
-                          <td><?php echo $contact->getName(); ?></td>
-                          <td><?php echo $contact->getFirstname() . '&nbsp;'
+                          <td><?= $contact->getId(); ?></td>
+                          <td><?= $contact->getName(); ?></td>
+                          <td><?= $contact->getFirstname() . '&nbsp;'
                             . $contact->getLastname(); ?></td>
-                          <td><?php echo $contact->getCity(); ?></td>
-                          <td><?php echo $contact->getPhone(); ?></td>
-                          <td><a class="workaround" href="#">Übersicht</a></td>
-                          <td><a class="workaround" href="#">Bearbeiten</a></td>
-                          <td><a class="workaround" href="#">Löschen</a></td>
+                          <td><?= $contact->getCity(); ?></td>
+                          <td><?= $contact->getPhone(); ?></td>
+                          <td><a href="<?= \App::getBaseUrl(); ?>contact/view/id/<?= $contact->getId(); ?>">Übersicht</a></td>
+                          <td><a href="<?= \App::getBaseUrl(); ?>contact/edit/id/<?= $contact->getId(); ?>">Bearbeiten</a></td>
                       </tr>
                   <?php endforeach; ?>
                 </tbody>
@@ -58,7 +62,12 @@
         <!-- -->
         <!-- Projektübersicht -->
         <div>
-            <h2>Projektübersicht</h2>
+            <div>
+                <h2>Projektübersicht
+                    <span class="element-pos-right"><a class="button-light" href="<?= \App::getBaseUrl(); ?>project/new" title="Neues Projekt anlegen">+</a></span>
+                    <hr>
+                </h2>
+            </div>
             <table>
                 <thead>
                     <tr>
@@ -74,15 +83,14 @@
                 <tbody>
                   <?php foreach($projects as $project): ?>
                       <tr>
-                          <td><?php echo $project->getId(); ?></td>
-                          <td><?php echo $project->getTitle(); ?></td>
-                          <td><?php echo $project->getBegin(); ?></td>
-                          <td><?php echo $project->getEnd(); ?></td>
-                          <td><?php echo $project->getStatus(); ?></td>
-                          <td><?php echo $project->getCreatedAt(); ?></td>
-                          <td><a class="workaround" href="#">Übersicht</a></td>
-                          <td><a class="workaround" href="#">Bearbeiten</a></td>
-                          <td><a class="workaround" href="#">Löschen</a></td>
+                          <td><?= $project->getId(); ?></td>
+                          <td><?= $project->getTitle(); ?></td>
+                          <td><?= $project->getBegin(); ?></td>
+                          <td><?= $project->getEnd(); ?></td>
+                          <td><?= $project->getStatus(); ?></td>
+                          <td><?= $project->getCreatedAt(); ?></td>
+                          <td><a href="<?= \App::getBaseUrl(); ?>project/view/id/<?= $project->getId(); ?>">Übersicht</a></td>
+                          <td><a href="<?= \App::getBaseUrl(); ?>project/edit/id/<?= $project->getId(); ?>">Bearbeiten</a></td>
                       </tr>
                   <?php endforeach; ?>
                 </tbody>
@@ -91,12 +99,18 @@
         <!-- Projekte -->
         <!-- Aufgabenübersicht -->
         <div>
-            <h2>Aufgabenübersicht</h2>
+            <div>
+                <h2>Aufgabenübersicht
+                    <span class="element-pos-right"><a class="button-light" href="<?= \App::getBaseUrl(); ?>task/new" title="Neue Aufgabe anlegen.">+</a></span>
+                    <hr>
+                </h2>
+            </div>
             <table>
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>Titel</th>
+                        <th>Projekt</th>
                         <th>Begin</th>
                         <th>Ende</th>
                         <th>Status</th>
@@ -106,14 +120,14 @@
                 <tbody>
                   <?php foreach($tasks as $task): ?>
                       <tr>
-                          <td><?php echo $task->getId(); ?></td>
-                          <td><?php echo $task->getTitle(); ?></td>
-                          <td><?php echo $task->getBegin(); ?></td>
-                          <td><?php echo $task->getEnd(); ?></td>
-                          <td><?php echo $task->getStatus(); ?></td>
-                          <td><a class="workaround" href="#">Übersicht</a></td>
-                          <td><a class="workaround" href="#">Bearbeiten</a></td>
-                          <td><a class="workaround" href="#">Löschen</a></td>
+                          <td><?= $task->getId(); ?></td>
+                          <td><?= $task->getTitle(); ?></td>
+                          <td><?= $task->getProjectTitle(1); ?></td>
+                          <td><?= $task->getBegin(); ?></td>
+                          <td><?= $task->getEnd(); ?></td>
+                          <td><?= $task->getStatus(); ?></td>
+                          <td><a href="<?= \App::getBaseUrl(); ?>task/view/id/<?= $task->getId(); ?>">Übersicht</a></td>
+                          <td><a href="<?= \App::getBaseUrl(); ?>task/edit/id/<?= $task->getId(); ?>">Bearbeiten</a></td>
                       </tr>
                   <?php endforeach; ?>
                 </tbody>

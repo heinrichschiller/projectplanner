@@ -14,7 +14,7 @@ class TaskModel
     private $_projectId = '';
     private $_createdAt = '';
     private $_updatedAt = '';
-
+    private $_projectTitle = '';
 
     /**
      * Get the value of Id
@@ -221,7 +221,7 @@ class TaskModel
     /**
      * Set the value of Created At
      *
-     * @param mixed _created_at
+     * @param mixed _createdAt
      *
      * @return self
      */
@@ -245,7 +245,7 @@ class TaskModel
     /**
      * Set the value of Updated At
      *
-     * @param mixed _updated_at
+     * @param mixed _updatedAt
      *
      * @return self
      */
@@ -256,4 +256,27 @@ class TaskModel
         return $this;
     }
 
+    /**
+     * Get the value of project title
+     *
+     * @return string
+     */
+    public function getProjectTitle()
+    {
+        return $this->_projectTitle;
+    }
+
+    /**
+     * Set the value of project title
+     *
+     * @param string _projectTitle
+     *
+     * @return self
+     */
+    public function setProjectTitle($projectTitle)
+    {
+        $this->_projectTitle = $projectTitle;
+
+        return $this;
+    }
 }

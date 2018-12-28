@@ -8,7 +8,7 @@
     <body>
         <nav>
             <ul class="navigation">
-                <li><a href="<?php echo \App::getBaseUrl(); ?>index/main">Home</a></li>
+                <li><a href="<?php echo \App::getBaseUrl(); ?>index/main">Start</a></li>
                 <li><a href="<?php echo \App::getBaseUrl(); ?>contact/index">Kontakte</a></li>
                 <li><a href="<?php echo \App::getBaseUrl(); ?>project/index">Projekte</a></li>
                 <li><a href="<?php echo \App::getBaseUrl(); ?>task/index">Aufgaben</a></li>
@@ -41,14 +41,14 @@
                 <tbody>
                   <?php foreach($tasks as $task): ?>
                       <tr>
-                          <td><?php echo $task->getId(); ?></td>
-                          <td><?php echo $task->getTitle(); ?></td>
-                          <td><?php echo $task->getBegin(); ?></td>
-                          <td><?php echo $task->getEnd(); ?></td>
-                          <td><?php echo $task->getStatus(); ?></td>
-                          <td><a class="workaround" href="#">Übersicht</a></td>
-                          <td><a class="workaround" href="#">Bearbeiten</a></td>
-                          <td><a class="workaround" href="#">Löschen</a></td>
+                          <td><?= $task->getId(); ?></td>
+                          <td><?= $task->getTitle(); ?></td>
+                          <td><?= $task->getBegin(); ?></td>
+                          <td><?= $task->getEnd(); ?></td>
+                          <td><?= $task->getStatus(); ?></td>
+                          <td><a href="#">Übersicht</a></td>
+                          <td><a href="#">Bearbeiten</a></td>
+                          <td><a href="#">Löschen</a></td>
                       </tr>
                   <?php endforeach; ?>
                 </tbody>
