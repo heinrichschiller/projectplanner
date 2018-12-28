@@ -1,83 +1,58 @@
-<!DOCTYPE html>
-<html lang="de">
-    <head>
-        <meta charset="utf8">
-        <title>Hauptseite</title>
-        <link href="<?php echo \App::getBaseUrl(); ?>skin/css/style.css" rel="stylesheet">
-    </head>
-    <body>
-        <nav>
-            <ul class="navigation">
-                <li><a href="<?php echo \App::getBaseUrl(); ?>index/main">Start</a></li>
-                <li><a href="<?php echo \App::getBaseUrl(); ?>contact/index">Kontakte</a></li>
-                <li><a href="<?php echo \App::getBaseUrl(); ?>project/index">Projekte</a></li>
-                <li><a href="<?php echo \App::getBaseUrl(); ?>task/index">Aufgaben</a></li>
-                <li>
-                    <?php if(\Session\User::isLoggedIn()): ?>
-                        <a href="<?php echo \App::getBaseUrl(); ?>index/login">Sign out</a>
-                    <?php else: ?>
-                        <a href="<?php echo \App::getBaseUrl(); ?>index/login">Sign in</a>
-                    <?php endif; ?>
-                </li>
-            </ul>
-        </nav>
-        <header>
-            <h1>Project-Planner</h1>
-        </header>
-        <div class="container">
-            <form action="<?php echo \App::getBaseUrl(); ?>contact/add" method="post">
-                <div>
-                    <h2>Neuer Kontakt</h2>
-                </div>
-                <div>
-                    <label for="name">Firma:</label>
-                    <input type="text" name="name" id="name">
-                </div>
-                <div>
-                    <label for="firstname">Vorname:</label>
-                    <input type="text" name="firstname" id="firstname">
-                    <label for="lastname">Nachname:</label>
-                    <input type="text" name="lastname" id="lastname">
-                </div>
-                <fieldset><legend>Adresse</legend>
-                    <div>
-                        <label for="street">Straße:</label>
-                        <input type="text" name="street" id="street">
-                    </div>
-                    <div>
-                        <label for="zip">PLZ:</label>
-                        <input type="text" name="zip" id="zip">
-                    </div>
-                    <div>
-                        <label for="city">Ort:</label>
-                        <input type="text" name="city" id="city">
-                    </div>
-                    <div>
-                        <label for="state">Bundesland:</label>
-                        <input type="text" name="state" id="state">
-                    </div>
-                    <div>
-                        <label for="country">Land:</label>
-                        <input type="text" name="country" id="country">
-                    </div>
-                </fieldset>
-                <div>
-                    <label for="phone">Telefon:</label>
-                    <input type="text" name="phone" id="phone">
-                </div>
-                <div>
-                    <label for="mobile">Mobile:</label>
-                    <input type="text" name="mobile" id="mobile">
-                </div>
-                <div>
-                    <label for="email">Email:</label>
-                    <input type="email" name="email" id="email">
-                </div>
-                <div class="button-row">
-                    <button type="submit" class="button">Anlegen</button>&nbsp;&nbsp;
-                    <button type="reset" class="button">Abbrechen</button>
-                </div>
-            </form>
+<header>
+    <h1>Project-Planner</h1>
+</header>
+<div class="container">
+    <form action="<?php echo \App::getBaseUrl(); ?>contact/add" method="post">
+        <div>
+            <h2>Neuer Kontakt</h2>
         </div>
-    </body>
-</html>
+        <div>
+            <label for="name">Firma:</label>
+            <input type="text" name="name" id="name">
+        </div>
+        <div>
+            <label for="firstname">Vorname:</label>
+            <input type="text" name="firstname" id="firstname">
+            <label for="lastname">Nachname:</label>
+            <input type="text" name="lastname" id="lastname">
+        </div>
+        <fieldset><legend>Adresse</legend>
+            <div>
+                <label for="street">Straße:</label>
+                <input type="text" name="street" id="street">
+            </div>
+            <div>
+                <label for="zip">PLZ:</label>
+                <input type="text" name="zip" id="zip">
+            </div>
+            <div>
+                <label for="city">Ort:</label>
+                <input type="text" name="city" id="city">
+            </div>
+            <div>
+                <label for="state">Bundesland:</label>
+                <input type="text" name="state" id="state">
+            </div>
+            <div>
+                <label for="country">Land:</label>
+                <input type="text" name="country" id="country">
+            </div>
+        </fieldset>
+        <div>
+            <label for="phone">Telefon:</label>
+            <input type="text" name="phone" id="phone">
+        </div>
+        <div>
+            <label for="mobile">Mobile:</label>
+            <input type="text" name="mobile" id="mobile">
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email">
+        </div>
+        <div class="button-row">
+            <button type="submit" class="button">Anlegen</button>&nbsp;&nbsp;
+            <button type="reset" class="button">Abbrechen</button>
+        </div>
+    </form>
+</div>

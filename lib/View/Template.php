@@ -16,8 +16,11 @@ class Template
         extract($data);
 
         ob_start();
+        require ABS_PATH . '/template/header.phtml';
+        require ABS_PATH . '/template/navigation.phtml';
         require_once ABS_PATH . '/template/' . $this->_tmplFile;
         $htmlResponse = ob_get_contents();
+        require ABS_PATH . '/template/footer.phtml';
         ob_end_clean();
 
         return $htmlResponse;
