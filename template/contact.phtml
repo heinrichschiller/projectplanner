@@ -2,19 +2,29 @@
     <h1>Project-Planner</h1>
 </header>
 <div class="container">
-    <form action="<?php echo \App::getBaseUrl(); ?>contact/add" method="post">
+
+    <?php if(!isset($contact)): ?>
+        <form action="<?= \App::getBaseUrl(); ?>contact/add" method="post">
+    <?php else: ?>
+        <form action="<?= \App::getBaseUrl(); ?>contact/update" method="post">
+    <?php endif; ?>
+
         <div>
-            <h2>Neuer Kontakt</h2>
+            <?php if(!isset($contact)): ?>
+                <h2>Neuer Kontakt</h2>
+            <?php else: ?>
+                <h2>Kontakt</h2>
+            <?php endif; ?>
         </div>
         <div>
             <label for="name">Firma:</label>
-            <input type="text" name="name" id="name">
+            <input type="text" name="name" value="<?= isset($contact) ? $contact->getName() : ''; ?>" id="name">
         </div>
         <div>
             <label for="firstname">Vorname:</label>
-            <input type="text" name="firstname" id="firstname">
+            <input type="text" name="firstname" value="<?= isset($contact) ? $contact->getFirstname() : ''; ?>" id="firstname">
             <label for="lastname">Nachname:</label>
-            <input type="text" name="lastname" id="lastname">
+            <input type="text" name="lastname" value="<?= isset($contact) ? $contact->getLastname() : ''; ?>" id="lastname">
         </div>
         <fieldset><legend>Adresse</legend>
             <div>
@@ -27,7 +37,7 @@
             </div>
             <div>
                 <label for="city">Ort:</label>
-                <input type="text" name="city" id="city">
+                <input type="text" name="city" value="<?= isset($contact) ? $contact->getcity() : ''; ?>" id="city">
             </div>
             <div>
                 <label for="state">Bundesland:</label>
@@ -40,7 +50,7 @@
         </fieldset>
         <div>
             <label for="phone">Telefon:</label>
-            <input type="text" name="phone" id="phone">
+            <input type="text" name="phone" value="<?= isset($contact) ? $contact->getPhone() : ''; ?>" id="phone">
         </div>
         <div>
             <label for="mobile">Mobile:</label>
@@ -51,7 +61,7 @@
             <input type="email" name="email" id="email">
         </div>
         <div class="button-row">
-            <button type="submit" class="button">Anlegen</button>&nbsp;&nbsp;
+            <button type="submit" class="button">Speichern</button>&nbsp;&nbsp;
             <button type="reset" class="button">Abbrechen</button>
         </div>
     </form>

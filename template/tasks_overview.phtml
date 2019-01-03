@@ -9,9 +9,11 @@
             <tr>
                 <th>#</th>
                 <th>Titel</th>
+                <th>Projekt</th>
                 <th>Begin</th>
                 <th>Ende</th>
                 <th>Status</th>
+                <th>Fortschritt</th>
                 <th colspan="3">Aktionen</th>
             </tr>
         </thead>
@@ -20,12 +22,14 @@
               <tr>
                   <td><?= $task->getId(); ?></td>
                   <td><?= $task->getTitle(); ?></td>
+                  <td>-</td>
                   <td><?= $task->getBegin(); ?></td>
                   <td><?= $task->getEnd(); ?></td>
                   <td><?= $task->getStatus(); ?></td>
-                  <td><a href="#">Übersicht</a></td>
-                  <td><a href="#">Bearbeiten</a></td>
-                  <td><a href="#">Löschen</a></td>
+                  <td>-</td>
+                  <td><a href="<?= \App::getBaseUrl(); ?>task/view/id/<?= $task->getId(); ?>">Übersicht</a></td>
+                  <td><a href="<?= \App::getBaseUrl(); ?>task/edit/id/<?= $task->getId(); ?>">Bearbeiten</a></td>
+                  <td><a href="<?= \App::getBaseUrl(); ?>task/delete/id/<?= $task->getId(); ?>">Löschen</a></td>
               </tr>
           <?php endforeach; ?>
         </tbody>

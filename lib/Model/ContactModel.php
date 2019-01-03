@@ -5,20 +5,25 @@ namespace Model;
 class ContactModel
 {
     private $_id = 0;
+    private $_company = '';
     private $_name = '';
     private $_firstname = '';
     private $_lastname = '';
+    private $_street = '';
     private $_city = '';
+    private $_state = '';
+    private $_country = '';
     private $_phone = '';
+    private $_mobile = '';
+    private $_email = '';
     private $_createdAt = '';
     private $_updatedAt = '';
-
     private $_contactPerson = '';
 
     /**
      * Get the value of Id
      *
-     * @return mixed
+     * @return int
      */
     public function getId()
     {
@@ -28,13 +33,13 @@ class ContactModel
     /**
      * Set the value of Id
      *
-     * @param mixed _id
+     * @param int id
      *
      * @return self
      */
-    public function setId($_id)
+    public function setId($id)
     {
-        $this->_id = $_id;
+        $this->_id = $id;
 
         return $this;
     }
@@ -42,7 +47,7 @@ class ContactModel
     /**
      * Get the value of Name
      *
-     * @return mixed
+     * @return string
      */
     public function getName()
     {
@@ -52,13 +57,13 @@ class ContactModel
     /**
      * Set the value of Name
      *
-     * @param mixed _name
+     * @param string name
      *
      * @return self
      */
-    public function setName($_name)
+    public function setName($name)
     {
-        $this->_name = $_name;
+        $this->_name = $name;
 
         return $this;
     }
@@ -66,7 +71,7 @@ class ContactModel
     /**
      * Get the value of Firstname
      *
-     * @return mixed
+     * @return string
      */
     public function getFirstname()
     {
@@ -76,13 +81,13 @@ class ContactModel
     /**
      * Set the value of Firstname
      *
-     * @param mixed _firstname
+     * @param string firstname
      *
      * @return self
      */
-    public function setFirstname($_firstname)
+    public function setFirstname($firstname)
     {
-        $this->_firstname = $_firstname;
+        $this->_firstname = $firstname;
 
         return $this;
     }
@@ -90,7 +95,7 @@ class ContactModel
     /**
      * Get the value of Lastname
      *
-     * @return mixed
+     * @return string
      */
     public function getLastname()
     {
@@ -100,13 +105,13 @@ class ContactModel
     /**
      * Set the value of Lastname
      *
-     * @param mixed _lastname
+     * @param string lastname
      *
      * @return self
      */
-    public function setLastname($_lastname)
+    public function setLastname($lastname)
     {
-        $this->_lastname = $_lastname;
+        $this->_lastname = $lastname;
 
         return $this;
     }
@@ -114,7 +119,7 @@ class ContactModel
     /**
      * Get the value of City
      *
-     * @return mixed
+     * @return string
      */
     public function getCity()
     {
@@ -124,13 +129,13 @@ class ContactModel
     /**
      * Set the value of City
      *
-     * @param mixed _city
+     * @param string city
      *
      * @return self
      */
-    public function setCity($_city)
+    public function setCity($city)
     {
-        $this->_city = $_city;
+        $this->_city = $city;
 
         return $this;
     }
@@ -138,7 +143,7 @@ class ContactModel
     /**
      * Get the value of Phone
      *
-     * @return mixed
+     * @return string
      */
     public function getPhone()
     {
@@ -148,13 +153,13 @@ class ContactModel
     /**
      * Set the value of Phone
      *
-     * @param mixed _phone
+     * @param string phone
      *
      * @return self
      */
-    public function setPhone($_phone)
+    public function setPhone($phone)
     {
-        $this->_phone = $_phone;
+        $this->_phone = $phone;
 
         return $this;
     }
@@ -172,13 +177,13 @@ class ContactModel
     /**
      * Set the value of Created At
      *
-     * @param mixed _createdAt
+     * @param string createdAt
      *
      * @return self
      */
-    public function setCreatedAt($_createdAt)
+    public function setCreatedAt($createdAt)
     {
-        $this->_createdAt = $_createdAt;
+        $this->_createdAt = $createdAt;
 
         return $this;
     }
@@ -186,7 +191,7 @@ class ContactModel
     /**
      * Get the value of Updated At
      *
-     * @return mixed
+     * @return string
      */
     public function getUpdatedAt()
     {
@@ -196,13 +201,13 @@ class ContactModel
     /**
      * Set the value of Updated At
      *
-     * @param mixed _updatedAt
+     * @param string updatedAt
      *
      * @return self
      */
-    public function setUpdatedAt($_updatedAt)
+    public function setUpdatedAt($updatedAt)
     {
-        $this->_updatedAt = $_updatedAt;
+        $this->_updatedAt = $updatedAt;
 
         return $this;
     }
@@ -210,7 +215,7 @@ class ContactModel
     /**
      * Get the value of Contact Person
      *
-     * @return mixed
+     * @return string
      */
     public function getContactPerson()
     {
@@ -220,13 +225,13 @@ class ContactModel
     /**
      * Set the value of Contact Person
      *
-     * @param mixed _contactPerson
+     * @param string contactPerson
      *
      * @return self
      */
-    public function setContactPerson($_contactPerson)
+    public function setContactPerson($contactPerson)
     {
-        $this->_contactPerson = $_contactPerson;
+        $this->_contactPerson = $contactPerson;
 
         return $this;
     }

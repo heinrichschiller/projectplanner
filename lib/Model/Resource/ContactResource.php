@@ -113,6 +113,26 @@ class ContactResource extends Base
         $stmt->execute();
     }
 
+    public function update(array $values)
+    {
+        $contact = new ContactModel();
+
+        $contact->setName($values['name']);
+        $contact->setFirstname($values['firstname']);
+        $contact->setLastname($values['lastname']);
+        $contact->setCity($values['city']);
+        $contact->setPhone($values['phone']);
+
+        $sql = "
+        UPDATE `contact` SET `name`=:name,
+            `firstname`=:firstname,
+            `lastname`=:lastname,
+            `city`=:city,
+            `phone`=:phone
+            WHERE 1
+        ";
+    }
+
     public function delete(int $id)
     {
         $sql = "

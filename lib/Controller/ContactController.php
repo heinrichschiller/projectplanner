@@ -59,6 +59,19 @@ class ContactController extends Base
         echo $this->render('contact_overview.phtml', $list);
     }
 
+    public function editAction($params)
+    {
+        User::checkLogin();
+
+        $contact = new ContactResource();
+
+        $list = [
+            'contact' => $contact->getContact($params['id'])
+        ];
+
+        echo $this->render('contact.phtml', $list);
+    }
+
     public function deleteAction($params)
     {
         User::checkLogin();

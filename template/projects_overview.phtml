@@ -12,6 +12,7 @@
                 <th>Begin</th>
                 <th>Ende</th>
                 <th>Status</th>
+                <th>Fortschritt</th>
                 <th>Erstellt am</th>
                 <th colspan="2">Aktionen</th>
             </tr>
@@ -24,6 +25,7 @@
                   <td><?= $project->getBegin(); ?></td>
                   <td><?= $project->getEnd(); ?></td>
                   <td><?= $project->getStatus(); ?></td>
+                  <td>-</td>
                   <td><?= $project->getCreatedAt(); ?></td>
                   <td><a href="<?php echo \App::getBaseUrl(); ?>project/view/id/<?= $project->getId(); ?>">Übersicht</a></td>
                   <td><a href="<?php echo \App::getBaseUrl(); ?>project/edit/id/<?= $project->getId(); ?>">Bearbeiten</a></td>
