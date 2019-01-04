@@ -50,7 +50,7 @@ class ProjectController extends Base
         $project = new ProjectResource();
         $task = new TaskResource();
 
-        $projectList = $project->getProjectById($params['id']);
+        $projectList = $project->getProject($params['id']);
 
         $id = $projectList->getContactId();
         $contactList = $contact->getContact($id);

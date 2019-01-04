@@ -2,36 +2,48 @@
     <h1>Project-Planner</h1>
 </header>
 <div>
-    <form action="<?php echo \App::getBaseUrl(); ?>task/add" method="post">
+    <?php if(isset($task)): ?>
+        <form action="<?= \App::getBaseUrl(); ?>task/update" method="post">
+    <?php else: ?>
+        <form action="<?= \App::getBaseUrl(); ?>task/add" method="post">
+    <?php endif; ?>
         <div>
-            <h2>Neue Aufgabe</h2>
+            <?php if(isset($task)): ?>
+                <h2>Aufgabe</h2>
+            <?php else: ?>
+                <h2>Neue Aufgabe</h2>
+            <?php endif; ?>
         </div>
         <div>
             <label for="name">Titel:</label>
-            <input type="text" name="title" id="name">
+            <input type="text" name="title" value="<?= isset($task) ? $task->getTitle() : ''; ?>" id="name">
         </div>
         <div>
             <label for="contact">Kontakt:</label>
             <select id="contact" name="contactId">
                 <?php foreach ($contacts as $contact): ?>
-                <option value="<?php echo $contact->getId(); ?>"><?php echo $contact->getName(); ?></option>
+                <option value="<?php echo $contact->getId(); ?>"><?= $contact->getName(); ?></option>
                 <?php endforeach; ?>
             </select>
         <div>
             <label for="project">Projekt.:</label>
             <select id="contact" name="projectId">
                 <?php foreach ($projects as $project): ?>
-                <option value="<?php echo $project->getId(); ?>"><?php echo $project->getTitle(); ?></option>
+                <option value="<?php echo $project->getId(); ?>"><?= $project->getTitle(); ?></option>
                 <?php endforeach; ?>
             </select>
         </div>
         <div>
             <label for="desc">Beschreibung:</label>
-            <textarea name="desc" id="desc"></textarea>
+            <textarea name="desc" id="desc"><?= isset($task) ? $task->getDesc() : ''; ?></textarea>
         </div>
         <div>
             <label for="begin">Anfang:</label>
+            <?php if(isset($task)): ?>
+            <input type="datetime-local" name="begin" value="<?= $task->getBegin(); ?>" id="begin">
+            <?php else: ?>
             <input type="date" name="begin" id="begin">
+            <?php endif; ?>
             <label for="end">Ende:</label>
             <input type="date" name="end" id="end">
         </div>
@@ -43,8 +55,8 @@
             </select>
         </div>
         <div class="button-row">
-            <button type="submit" class="button">Anlegen</button>
-            <button type="submit" class="button">Abbrechen</button>
+            <button type="submit" class="button">Speichern</button>
+            <button type="reset" class="button">Abbrechen</button>
         </div>
     </form>
 </div>

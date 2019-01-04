@@ -42,7 +42,7 @@ class ProjectResource extends Base
         return $projects;
     }
 
-    public function getProjectById(int $id)
+    public function getProject(int $id)
     {
         $sql = "
         SELECT `id`,

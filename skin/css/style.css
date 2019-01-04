@@ -5,7 +5,7 @@ body {
 }
 
 h2 {
-    width: 37.3em;
+    width: 39.9em;
 }
 
 nav {
@@ -33,7 +33,7 @@ fieldset {
 }
 
 table {
-    width: 56em;
+    width: 60em;
 }
 
 th {
@@ -42,8 +42,13 @@ th {
     color: #fefefe;
 }
 
+textarea {
+    width: 33em;
+    height: 80px;
+}
+
 .container {
-    width: 40em;
+    width: 60em;
 }
 
 .container div {
@@ -94,4 +99,13 @@ th {
 .contact,
 .contactpartner {
     width: 11em;
+}
+
+.project-active,
+.task-active {
+    background-color: #ffffbb;
+}
+
+.project-inprocessing {
+    background-color: #bbffbb;
 }

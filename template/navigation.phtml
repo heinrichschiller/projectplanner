@@ -6,9 +6,9 @@
         <li><a href="<?php echo \App::getBaseUrl(); ?>task/index">Aufgaben</a></li>
         <li>
             <?php if(\Session\User::isLoggedIn()): ?>
-                <a href="<?php echo \App::getBaseUrl(); ?>index/login">Sign out</a>
+                <a href="<?php echo \App::getBaseUrl(); ?>index/login">Abmelden</a>
             <?php else: ?>
-                <a href="<?php echo \App::getBaseUrl(); ?>index/login">Sign in</a>
+                <a href="<?php echo \App::getBaseUrl(); ?>index/login">Anmelden</a>
             <?php endif; ?>
         </li>
     </ul>

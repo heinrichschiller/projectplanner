@@ -1,0 +1,40 @@
+<header>
+    <h1>Project-Planner</h1>
+</header>
+<div>
+    <form action="<?= \App::getBaseUrl(); ?>contact/update" method="post">
+        <br>
+        <div>
+            <h2>Aufgabe</h2>
+        </div>
+        <div>
+            <label for="city">Title:</label>
+            <span><?= $task->getTitle(); ?></span>
+        </div>
+        <div>
+            <label for="name">Kontakt:</label>
+            <span><?= $contact->getName(); ?></span>
+        </div>
+        <div>
+            <label for="project">Projekt:</label>
+            <span><?= $project->getTitle(); ?></span>
+        </div>
+        <div>
+            <label for="desc">Beschreibung:</label><br>
+            <span><?= $task->getDesc(); ?></span>
+        </div>
+        <div>
+        	<label for="begin">Anfang:</label>
+        	<span><?= $task->getBegin(); ?></span>
+        	<label for="end">Ende:</label>
+        	<span><?= $task->getEnd(); ?></span>
+        </div>
+        <div>
+            <label for="city">Status:</label>
+            <span><?= $task->getStatus(); ?></span>
+        </div>
+        <div class="button-row">
+            <a class="button" href="<?= \App::getBaseUrl(); ?>task/edit/id/<?= $task->getId(); ?>">Bearbeiten</a>
+        </div>
+    </form>
+</div>

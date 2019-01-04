@@ -38,6 +38,25 @@ class TaskController extends Base
         echo $this->render('task.phtml', $list);
     }
 
+    public function editAction($params)
+    {
+        User::checkLogin();
+
+        $task    = new TaskResource();
+        $contact = new ContactResource();
+        $project = new ProjectResource();
+
+        $taskItem = $task->getTask($params['id']);
+
+        $list = [
+            'task'    => $taskItem,
+            'contact' => $contact->getContact($taskItem->getContactId()),
+            'project' => $project->getProject($taskItem->getProjectId())
+        ];
+
+        echo $this->render('task.phtml', $list);
+    }
+
     public function addAction()
     {
         User::checkLogin();
@@ -47,6 +66,25 @@ class TaskController extends Base
         $task->add($_POST);
 
         header('Location: ' . \App::getBaseUrl() . 'task/index');
+    }
+
+    public function viewAction($params)
+    {
+        User::checkLogin();
+
+        $task = new TaskResource();
+        $contact = new ContactResource();
+        $project = new ProjectResource();
+
+        $taskItem = $task->getTask($params['id']);
+
+        $list = [
+            'task' => $taskItem,
+            'contact' => $contact->getContact($taskItem->getContactId()),
+            'project' => $project->getProject($taskItem->getProjectId())
+        ];
+
+        echo $this->render('task_overview.phtml', $list);
     }
 
     public function deleteAction(array $params)
