@@ -5,13 +5,13 @@ body {
 }
 
 h2 {
-    width: 39.9em;
+    width: 45.3em;
 }
 
 nav {
-    background-color: rgba(29, 78, 137, 1);
+    background-color: #21252b;
     display: flex;
-    flex-direction: row wrap;
+    flex-direction: column;
     justify-content: flex-start;
 }
 
@@ -22,9 +22,10 @@ ul {
 
 header {
     margin-top: -1.3em;
-    height: 100px;
-    line-height: 100px;
-    background-color: #ddd;
+    height: 50px;
+    line-height: 50px;
+    background-color: rgba(29, 78, 137, 1);
+    color: #fefefe;
 }
 
 fieldset {
@@ -33,13 +34,17 @@ fieldset {
 }
 
 table {
-    width: 60em;
+    width: 68em;
 }
 
 th {
     border: 1px solid black;
     background-color: black;
     color: #fefefe;
+}
+
+td {
+    padding: 4px;
 }
 
 textarea {
@@ -61,6 +66,7 @@ textarea {
 
 .navigation {
     display: flex;
+    flex-direction: column;
 }
 
 .navigation li {
@@ -103,9 +109,11 @@ textarea {
 
 .project-active,
 .task-active {
-    background-color: #ffffbb;
+    background-color: #cccccc;
+    text-align: center;
 }
 
 .project-inprocessing {
-    background-color: #bbffbb;
+    background-color: #74ff95;
+    text-align: center;
 }
