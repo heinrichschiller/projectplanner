@@ -1,6 +1,3 @@
-<header>
-    <h1 class="project-title">Project-Planner</h1>
-</header>
 <!-- Kontaktnübersicht -->
 <div>
     <div>
@@ -93,6 +90,7 @@
                 <th>Begin</th>
                 <th>Ende</th>
                 <th>Status</th>
+                <th>Priorität</th>
                 <th colspan="3">Aktionen</th>
             </tr>
         </thead>
@@ -105,6 +103,7 @@
                   <td><?= $task->getBegin(); ?></td>
                   <td><?= $task->getEnd(); ?></td>
                   <td><?= $task->getStatus(); ?></td>
+                  <td>-</td>
                   <td><a href="<?= \App::getBaseUrl(); ?>task/view/id/<?= $task->getId(); ?>">Übersicht</a></td>
                   <td><a href="<?= \App::getBaseUrl(); ?>task/edit/id/<?= $task->getId(); ?>">Bearbeiten</a></td>
               </tr>

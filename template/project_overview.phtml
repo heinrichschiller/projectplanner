@@ -1,6 +1,3 @@
-<header>
-	<h1 class="project-title">Project-Planner</h1>
-</header>
 <div><br>
 	<h2>Projektübersicht</h2>
 </div>
@@ -18,7 +15,7 @@
 </div>
 <div>
 	<label for="desc">Beschreibung:</label>
-	<textarea id="desc" disabled><?= $project->getDesc(); ?>"</textarea>
+	<textarea id="desc" disabled><?= $project->getDesc(); ?></textarea>
 </div>
 <div>
 	<label for="begin">Anfang:</label>
@@ -50,7 +47,7 @@
 				<th colspan="3">Aktionen</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody id="tasks-table">
 			<?php foreach($tasks as $task): ?>
 			<tr>
 				<td><?= $task->getId(); ?></td>
