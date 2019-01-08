@@ -10,18 +10,21 @@ class TaskResource extends Base
     {
         $sql = '
         SELECT `tasks`.`id`,
-	       `tasks`.`title`,
-           `tasks`.`desc`,
-           `tasks`.`begin`,
-           `tasks`.`end`,
-           `tasks`.`status`,
-           `tasks`.`contact_id`,
-           `tasks`.`project_id`,
-           `tasks`.`created_at`,
-           `tasks`.`updated_at`,
-           `projects`.`title` as ptitle
-           FROM `tasks`
-           LEFT JOIN `projects` ON `projects`.`id` = `tasks`.`project_id`;
+        	`tasks`.`title`,
+            `tasks`.`desc`,
+            `tasks`.`begin`,
+            `tasks`.`end`,
+            `priority`.`desc` as priority,
+            `status`.`desc` as status,
+            `tasks`.`contact_id`,
+            `tasks`.`project_id`,
+            `tasks`.`created_at`,
+            `tasks`.`updated_at`,
+            `projects`.`title` as ptitle
+            FROM `tasks`
+            LEFT JOIN `priority` ON `priority`.`id` = `tasks`.`priority`
+            LEFT JOIN `status` ON `status`.`id` = `tasks`.`status`
+            LEFT JOIN `projects` ON `projects`.`id` = `tasks`.`project_id`
         ';
 
         $dbResult = $this->connect()->query($sql);
