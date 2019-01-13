@@ -5,6 +5,7 @@ namespace Controller;
 use Model\Resource\ContactResource;
 use Model\Resource\ProjectResource;
 use Model\Resource\TaskResource;
+use Helper\HtmlFormHelper;
 use Session\User;
 
 class TaskController extends Base
@@ -29,10 +30,12 @@ class TaskController extends Base
 
         $contactList = $contacts->getContacts();
         $projectsList = $projects->getProjects();
+        $statusList = HtmlFormHelper::getInstance()->getStatusList();
 
         $list = [
-            'contacts' => $contactList,
-            'projects'  => $projectsList
+            'contacts'   => $contactList,
+            'projects'   => $projectsList,
+            'statusList' => $statusList
         ];
 
         echo $this->render('task.phtml', $list);

@@ -4,6 +4,14 @@ body {
     background-color: #fefefe;
 }
 
+div {
+    margin: 0.2em 0;
+}
+
+h1 {
+    margin-left: 0.4em;   
+}
+
 h2 {
     width: 45.3em;
 }
@@ -21,11 +29,30 @@ ul {
 }
 
 header {
-    margin-top: -1.3em;
+    margin-top: -1.4em;
     height: 50px;
     line-height: 50px;
     background-color: rgba(29, 78, 137, 1);
     color: #fefefe;
+}
+
+select {
+    height: 2rem;
+}
+
+label {
+    width: 6em;
+    display: inline-block;
+}
+
+input[type="text"] {
+    width: 33em;
+    height: 2rem;
+}
+
+input[type="datetime-local"] {
+    width: 12.39em;
+    height: 2rem;
 }
 
 fieldset {
@@ -48,8 +75,19 @@ td {
 }
 
 textarea {
-    width: 33em;
-    height: 80px;
+    width: 32.85em;
+    height: 160px;
+}
+
+.pp-nav {
+    display: flex;
+}
+
+.pp-nav li {
+    margin-left: 1em;
+}
+.pp-nav li a {
+    color: #fefefe;
 }
 
 .container {
@@ -62,18 +100,6 @@ textarea {
 
 .project-title {
     margin-left: 0.5em;
-}
-
-.navigation {
-    display: flex;
-    flex-direction: column;
-}
-
-.navigation li {
-    margin-left: 1em;
-}
-.navigation li a {
-    color: #fefefe;
 }
 
 .button-row {
@@ -113,7 +139,32 @@ textarea {
     text-align: center;
 }
 
-.project-inprocessing {
+.project-inprocessing,
+.task-inprocessing {
     background-color: #74ff95;
     text-align: center;
+}
+
+.task-suspend {
+    background-color: #7a7aee;
+    text-align: center;
+}
+
+.task-done {
+    background-color: #ed9ee3;
+    text-align: center;
+}
+
+.not-important {
+    background-color: #cccccc;
+    text-align: center;
+}
+
+.in-planning {
+    background-color: #cccc33;
+    text-align: center;
+}
+
+.very-important {
+    background-color: #dd9999;
 }

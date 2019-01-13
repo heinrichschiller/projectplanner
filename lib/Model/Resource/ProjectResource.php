@@ -3,21 +3,24 @@
 namespace Model\Resource;
 
 use \Model\ProjectModel;
+use \Util\Date;
 
 class ProjectResource extends Base
 {
     public function getProjects()
     {
         $sql = '
-        SELECT `id`,
-            `title`,
-            `desc`,
-            `begin`,
-            `end`,
-            `status`,
-            `contact_id`,
-            `created_at`
-            FROM `projects`
+        SELECT `projects`.`id`,
+        	`projects`.`title`,
+        	`projects`.`desc`,
+        	UNIX_TIMESTAMP(`projects`.`begin`) as begin,
+        	UNIX_TIMESTAMP(`projects`.`end`) as end,
+        	`status`.`desc` as status,
+        	`projects`.`contact_id`,
+        	UNIX_TIMESTAMP(`projects`.`created_at`) as created_at
+        	FROM `projects`
+            LEFT JOIN `status` ON `status`.`id` = `projects`.`status`
+            LEFT JOIN `contact` ON `contact`.`id` = `projects`.`contact_id`
         ';
 
         $dbResult = $this->connect()->query($sql);
@@ -30,11 +33,11 @@ class ProjectResource extends Base
             $project->setId($row['id']);
             $project->setTitle($row['title']);
             $project->setDesc($row['desc']);
-            $project->setBegin($row['begin']);
-            $project->setEnd($row['end']);
+            $project->setBegin(Date::getInstance()->formatDateTime($row['begin']));
+            $project->setEnd(Date::getInstance()->formatDateTime($row['end']));
             $project->setStatus($row['status']);
             $project->setContactId($row['contact_id']);
-            $project->setCreatedAt($row['created_at']);
+            $project->setCreatedAt(Date::getInstance()->formatDateTime($row['created_at']));
 
             $projects[] = $project;
         }
@@ -45,16 +48,17 @@ class ProjectResource extends Base
     public function getProject(int $id)
     {
         $sql = "
-        SELECT `id`,
-            `title`,
-            `desc`,
-            `begin`,
-            `end`,
-            `status`,
-            `contact_id`,
-            `created_at`
-            FROM `projects`
-            WHERE `id` = $id
+        SELECT `projects`.`id`,
+        	`projects`.`title`,
+        	`projects`.`desc`,
+            `projects`.`begin`,
+        	`projects`.`end`,
+        	`status`.`desc` as status,
+        	`projects`.`contact_id`,
+        	`projects`.`created_at`
+        	FROM `projects`
+            LEFT JOIN `status` ON `status`.`id` = `projects`.`status`
+        	WHERE `projects`.`id` = $id
         ";
 
         $dbResult = $this->connect()->query($sql);
@@ -78,16 +82,17 @@ class ProjectResource extends Base
     public function getContactProjects(int $id)
     {
         $sql = "
-        SELECT `id`,
-            `title`,
-            `desc`,
-            `begin`,
-            `end`,
-            `status`,
-            `contact_id`,
-            `created_at`
-            FROM `projects`
-            WHERE `contact_id` = $id
+        SELECT `projects`.`id`,
+        	`projects`.`title`,
+        	`projects`.`desc`,
+            `projects`.`begin`,
+        	`projects`.`end`,
+        	`status`.`desc` as status,
+        	`projects`.`contact_id`,
+        	`projects`.`created_at`
+        	FROM `projects`
+            LEFT JOIN `status` ON `status`.`id` = `projects`.`status`
+            WHERE `projects`.`contact_id` = $id
         ";
 
         $dbResult = $this->connect()->query($sql);

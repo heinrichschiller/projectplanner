@@ -6,6 +6,7 @@ use Model\Resource\ProjectResource;
 use Model\Resource\ContactResource;
 use Model\Resource\TaskResource;
 use Session\User;
+use Helper\HtmlFormHelper;
 
 class ProjectController extends Base
 {
@@ -27,8 +28,14 @@ class ProjectController extends Base
         $contact = new ContactResource();
 
         $contactList = $contact->getContacts();
+        $statusList = HtmlFormHelper::getInstance()->getStatusList();
 
-        echo $this->render('project.phtml', array('contacts' => $contactList));
+        $list = [
+            'contacts' => $contactList,
+            'statusList'   => $statusList
+        ];
+
+        echo $this->render('project.phtml', $list);
     }
 
     public function addAction()

@@ -17,8 +17,8 @@ class Template
 
         ob_start();
         require ABS_PATH . '/template/head.phtml';
-        require ABS_PATH . '/template/header.phtml';
         require ABS_PATH . '/template/navigation.phtml';
+        require ABS_PATH . '/template/header.phtml';
         require_once ABS_PATH . '/template/' . $this->_tmplFile;
         $htmlResponse = ob_get_contents();
         require ABS_PATH . '/template/footer.phtml';

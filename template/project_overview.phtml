@@ -19,9 +19,9 @@
 </div>
 <div>
 	<label for="begin">Anfang:</label>
-	<input type="text" value="<?= $project->getBegin(); ?>" id="begin">
+	<input type="datetime-local" value="<?= $project->getBegin(); ?>" id="begin" disabled>
 	<label for="end">Ende:</label>
-	<input type="text" value="<?= $project->getEnd(); ?>" id="end">
+	<input type="datetime-local" value="<?= $project->getEnd(); ?>" id="end" disabled>
 </div>
 <div>
 	<label for="status">Status:</label>
@@ -43,6 +43,7 @@
 				<th>Begin</th>
 				<th>Ende</th>
 				<th>Status</th>
+				<th>Priorität</th>
 				<th>Fortschritt</th>
 				<th colspan="3">Aktionen</th>
 			</tr>
@@ -55,6 +56,7 @@
 				<td><?= $task->getBegin(); ?></td>
 				<td><?= $task->getEnd(); ?></td>
 				<td><?= $task->getStatus(); ?></td>
+				<td>-</td>
 				<td>-</td>
 				<td><a href="<?= \App::getBaseUrl(); ?>task/view/id/<?= $task->getId(); ?>">Übersicht</a></td>
 				<td><a href="<?= \App::getBaseUrl(); ?>task/edit/id/<?= $task->getId(); ?>">Bearbeiten</a></td>

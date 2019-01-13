@@ -52,6 +52,8 @@
                 <th>Begin</th>
                 <th>Ende</th>
                 <th>Status</th>
+                <th>Priorität</th>
+                <th>Fortschritt</th>
                 <th>Erstellt am</th>
                 <th colspan="2">Aktionen</th>
             </tr>
@@ -64,6 +66,8 @@
                   <td><?= $project->getBegin(); ?></td>
                   <td><?= $project->getEnd(); ?></td>
                   <td><?= $project->getStatus(); ?></td>
+                  <td>-</td>
+                  <td>-</td>
                   <td><?= $project->getCreatedAt(); ?></td>
                   <td><a href="<?= \App::getBaseUrl(); ?>project/view/id/<?= $project->getId(); ?>">Übersicht</a></td>
                   <td><a href="<?= \App::getBaseUrl(); ?>project/edit/id/<?= $project->getId(); ?>">Bearbeiten</a></td>
@@ -103,7 +107,7 @@
                   <td><?= $task->getBegin(); ?></td>
                   <td><?= $task->getEnd(); ?></td>
                   <td><?= $task->getStatus(); ?></td>
-                  <td>-</td>
+                  <td><?= $task->getPriority(); ?></td>
                   <td><a href="<?= \App::getBaseUrl(); ?>task/view/id/<?= $task->getId(); ?>">Übersicht</a></td>
                   <td><a href="<?= \App::getBaseUrl(); ?>task/edit/id/<?= $task->getId(); ?>">Bearbeiten</a></td>
               </tr>

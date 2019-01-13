@@ -42,7 +42,7 @@
                             <th colspan="2">Aktionen</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="projects-table">
                       <?php foreach($projects as $project): ?>
                           <tr>
                               <td><?= $project->getId(); ?></td>
@@ -73,7 +73,7 @@
                             <th colspan="2">Aktionen</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tasks-table">
                       <?php foreach($tasks as $task): ?>
                           <tr>
                               <td><?= $task->getId(); ?></td>

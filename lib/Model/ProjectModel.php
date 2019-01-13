@@ -11,6 +11,7 @@ class ProjectModel
     private $_end = '';
     private $_status = '';
     private $_contactId = '';
+    private $_contact = '';
     private $_createdAt = '';
 
 
@@ -178,6 +179,30 @@ class ProjectModel
     public function setContactId($_contactId)
     {
         $this->_contactId = $_contactId;
+
+        return $this;
+    }
+
+    /**
+     * Get the name of contact
+     *
+     * @return mixed
+     */
+    public function getContact()
+    {
+        return $this->_contact;
+    }
+
+    /**
+     * Set the name of contact.
+     *
+     * @param mixed contact
+     *
+     * @return self
+     */
+    public function setContact(string $contact)
+    {
+        $this->_contact = $contact;
 
         return $this;
     }

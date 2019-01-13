@@ -9,7 +9,8 @@ class TaskModel
     private $_desc = '';
     private $_begin = '';
     private $_end = '';
-    private $_status = '';
+    private $_status = 0;
+    private $_priority = '';
     private $_contactId = '';
     private $_projectId = '';
     private $_createdAt = '';
@@ -156,6 +157,30 @@ class TaskModel
     public function setStatus($status)
     {
         $this->_status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of priority.
+     *
+     * @return string
+     */
+    public function getPriority()
+    {
+        return $this->_priority;
+    }
+
+    /**
+     * Set the value of priority
+     *
+     * @param string priority
+     *
+     * @return self
+     */
+    public function setPriority($priority)
+    {
+        $this->_priority = $priority;
 
         return $this;
     }

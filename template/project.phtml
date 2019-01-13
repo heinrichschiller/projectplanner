@@ -32,8 +32,9 @@
         <div>
             <label for="status">Status:</label>
             <select id="status" name="status">
-                <option value="active">aktiv</option>
-                <option value="inactive">beendet</option>
+                <?php foreach ($statusList as $status): ?>
+                    <option value="<?= $status['id']; ?>"><?= $status['desc']; ?></option>
+                <?php endforeach; ?>
             </select>
         </div>
         <div class="button-row">

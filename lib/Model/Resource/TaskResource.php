@@ -40,6 +40,7 @@ class TaskResource extends Base
             $task->setBegin($row['begin']);
             $task->setEnd($row['end']);
             $task->setStatus($row['status']);
+            $task->setPriority($row['priority']);
             $task->setContactId($row['contact_id']);
             $task->setProjectId($row['project_id']);
             $task->setCreatedAt($row['created_at']);
@@ -94,18 +95,19 @@ class TaskResource extends Base
     public function getContactTasks(int $id)
     {
         $sql = "
-        SELECT `id`,
-            `title`,
-            `desc`,
-            `begin`,
-            `end`,
-            `status`,
-            `contact_id`,
-            `project_id`,
-            `created_at`,
-            `updated_at`
+        SELECT `tasks`.`id`,
+        	`tasks`.`title`,
+            `tasks`.`desc`,
+            `tasks`.`begin`,
+            `tasks`.`end`,
+            `status`.`desc` as status,
+            `tasks`.`contact_id`,
+            `tasks`.`project_id`,
+            `tasks`.`created_at`,
+            `tasks`.`updated_at`
             FROM `tasks`
-            WHERE `project_id` = $id
+            LEFT JOIN `status` ON `status`.`id` = `tasks`.`status`
+            WHERE `tasks`.`project_id` = $id
         ";
 
         $dbResult = $this->connect()->query($sql);
