@@ -3,7 +3,6 @@
 namespace Model\Resource;
 
 use \Model\ProjectModel;
-use \Util\Date;
 
 class ProjectResource extends Base
 {
@@ -27,17 +26,17 @@ class ProjectResource extends Base
 
         $projects = [];
 
-        while($row = $dbResult->fetch(\PDO::FETCH_ASSOC)) {
+        while($row = $dbResult->fetch(\PDO::FETCH_OBJ)) {
             $project = new ProjectModel();
 
-            $project->setId($row['id']);
-            $project->setTitle($row['title']);
-            $project->setDesc($row['desc']);
-            $project->setBegin(Date::getInstance()->formatDateTime($row['begin']));
-            $project->setEnd(Date::getInstance()->formatDateTime($row['end']));
-            $project->setStatus($row['status']);
-            $project->setContactId($row['contact_id']);
-            $project->setCreatedAt(Date::getInstance()->formatDateTime($row['created_at']));
+            $project->setId($row->id);
+            $project->setTitle($row->title);
+            $project->setDesc($row->desc);
+            $project->setBegin($row->begin);
+            $project->setEnd($row->end);
+            $project->setStatus($row->status);
+            $project->setContactId($row->contact_id);
+            $project->setCreatedAt($row->created_at);
 
             $projects[] = $project;
         }
@@ -51,11 +50,12 @@ class ProjectResource extends Base
         SELECT `projects`.`id`,
         	`projects`.`title`,
         	`projects`.`desc`,
-            `projects`.`begin`,
-        	`projects`.`end`,
+            UNIX_TIMESTAMP(`projects`.`begin`) as begin,
+        	UNIX_TIMESTAMP(`projects`.`end`) as end,
+            `projects`.`status` as statusId,
         	`status`.`desc` as status,
         	`projects`.`contact_id`,
-        	`projects`.`created_at`
+        	UNIX_TIMESTAMP(`projects`.`created_at`) as created_at
         	FROM `projects`
             LEFT JOIN `status` ON `status`.`id` = `projects`.`status`
         	WHERE `projects`.`id` = $id
@@ -63,18 +63,19 @@ class ProjectResource extends Base
 
         $dbResult = $this->connect()->query($sql);
 
-        $row = $dbResult->fetch(\PDO::FETCH_ASSOC);
+        $row = $dbResult->fetch(\PDO::FETCH_OBJ);
 
         $project = new ProjectModel();
 
-        $project->setId($row['id']);
-        $project->setTitle($row['title']);
-        $project->setDesc($row['desc']);
-        $project->setBegin($row['begin']);
-        $project->setEnd($row['end']);
-        $project->setStatus($row['status']);
-        $project->setContactId($row['contact_id']);
-        $project->setCreatedAt($row['created_at']);
+        $project->setId($row->id);
+        $project->setTitle($row->title);
+        $project->setDesc($row->desc);
+        $project->setBegin($row->begin);
+        $project->setEnd($row->end);
+        $project->setStatusId($row->statusId);
+        $project->setStatus($row->status);
+        $project->setContactId($row->contact_id);
+        $project->setCreatedAt($row->created_at);
 
         return $project;
     }
@@ -85,11 +86,11 @@ class ProjectResource extends Base
         SELECT `projects`.`id`,
         	`projects`.`title`,
         	`projects`.`desc`,
-            `projects`.`begin`,
-        	`projects`.`end`,
+            UNIX_TIMESTAMP(`projects`.`begin`) as begin,
+        	UNIX_TIMESTAMP(`projects`.`end`) as end,
         	`status`.`desc` as status,
         	`projects`.`contact_id`,
-        	`projects`.`created_at`
+        	UNIX_TIMESTAMP(`projects`.`created_at`) as created_at
         	FROM `projects`
             LEFT JOIN `status` ON `status`.`id` = `projects`.`status`
             WHERE `projects`.`contact_id` = $id
@@ -99,17 +100,17 @@ class ProjectResource extends Base
 
         $projects = [];
 
-        while($row = $dbResult->fetch(\PDO::FETCH_ASSOC)) {
+        while($row = $dbResult->fetch(\PDO::FETCH_OBJ)) {
             $project = new ProjectModel();
 
-            $project->setId($row['id']);
-            $project->setTitle($row['title']);
-            $project->setDesc($row['desc']);
-            $project->setBegin($row['begin']);
-            $project->setEnd($row['end']);
-            $project->setStatus($row['status']);
-            $project->setContactId($row['contact_id']);
-            $project->setCreatedAt($row['created_at']);
+            $project->setId($row->id);
+            $project->setTitle($row->title);
+            $project->setDesc($row->desc);
+            $project->setBegin($row->begin);
+            $project->setEnd($row->end);
+            $project->setStatus($row->status);
+            $project->setContactId($row->contact_id);
+            $project->setCreatedAt($row->created_at);
 
             $projects[] = $project;
         }

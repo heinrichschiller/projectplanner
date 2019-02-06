@@ -9,7 +9,7 @@ div {
 }
 
 h1 {
-    margin-left: 0.4em;   
+    margin-left: 0.4em;
 }
 
 h2 {
@@ -73,6 +73,15 @@ th {
 td {
     padding: 4px;
 }
+
+tr:hover {
+    background-color: #ccc;
+}
+
+tr:nth-child(even) {
+  background-color: #e0e0e0;
+}
+
 
 textarea {
     width: 32.85em;

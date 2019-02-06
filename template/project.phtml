@@ -1,41 +1,63 @@
 <div>
-    <form action="<?php echo \App::getBaseUrl(); ?>project/add" method="post">
+    <?php if(!isset($project)): ?>
+    <form action="<?= \App::getBaseUrl(); ?>project/add" method="post">
+    <?php else: ?>
+    <form action="<?= \App::getBaseUrl(); ?>project/update" method="post">
+    <?php endif; ?>
         <br>
         <div>
+            <?php if(!isset($project)): ?>
             <h2>Neues Projekt</h2>
+            <?php else: ?>
+            <h2>Projekt</h2>
+            <?php endif; ?>
         </div>
         <div>
             <label for="name">Titel:</label>
-            <input type="text" name="title" id="name">
+            <input type="text" name="title" value="<?= isset($project) ? $project->getTitle() : ''; ?>" id="name">
         </div>
         <div>
+            <?php if(!isset($contact)): ?>
             <label for="contact">Kontakt:</label>
             <select id="contact" name="contactId">
-                <?php foreach ($contacts as $contact): var_dump($contact);?>
+                <?php foreach ($contacts as $contact): ?>
                 <option value="<?php echo $contact->getId(); ?>"><?= $contact->getFirstname() . ' ' . $contact->getLastname(); ?></option>
                 <?php endforeach; ?>
             </select>
+            <?php else: ?>
+            <label for="contact">Kontakt:</label>
+            <input type="text" name="title" value="<?= $contact->getFirstname() . '&nbsp;' . $contact->getLastname(); ?>" id="name">
+            <?php endif; ?>
         <div>
             <label for="contact">Ansprechp.:</label>
-            <input type="text" name="contactPerson" id="name">
+            <input type="text" name="contactPerson" value="<?= isset($contact) ? $contact->getFirstname() . '&nbsp;' . $contact->getLastname() : ''; ?>" id="name">
         </div>
         <div>
             <label for="desc">Beschreibung:</label>
-            <textarea name="desc" id="desc"></textarea>
+            <textarea name="desc" id="desc"><?= isset($project) ? $project->getDesc() : ''; ?></textarea>
         </div>
         <div>
             <label for="begin">Anfang:</label>
-            <input type="date" name="begin" id="begin">
+            <input type="datetime-local" name="begin" value="<?= isset($project) ? $project->getBegin() : ''; ?>" id="begin">
             <label for="end">Ende:</label>
-            <input type="date" name="end" id="end">
+            <input type="datetime-local" name="end" value="<?= isset($project) ? $project->getEnd() : ''; ?>" id="end">
         </div>
         <div>
+            <?php if(!isset($project)): ?>
             <label for="status">Status:</label>
             <select id="status" name="status">
                 <?php foreach ($statusList as $status): ?>
-                    <option value="<?= $status['id']; ?>"><?= $status['desc']; ?></option>
+                <option value="<?= $status['id']; ?>"><?= $status['desc']; ?></option>
                 <?php endforeach; ?>
             </select>
+            <?php else: ?>
+            <label for="status">Status:</label>
+            <select id="status" name="status">
+                <?php foreach ($statusList as $status): ?>
+                <option value="<?= $status['id']; ?>" <?= ($project->getStatusId() == $status['id']) ? 'selected' : ''; ?>><?= $status['desc']; ?></option>
+                <?php endforeach; ?>
+            </select>
+            <?php endif; ?>
         </div>
         <div class="button-row">
             <button type="submit" class="button">Anlegen</button>

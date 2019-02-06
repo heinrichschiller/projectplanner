@@ -12,13 +12,13 @@ class TaskResource extends Base
         SELECT `tasks`.`id`,
         	`tasks`.`title`,
             `tasks`.`desc`,
-            `tasks`.`begin`,
-            `tasks`.`end`,
+            UNIX_TIMESTAMP(`tasks`.`begin`) as begin,
+            UNIX_TIMESTAMP(`tasks`.`end`) as end,
             `priority`.`desc` as priority,
             `status`.`desc` as status,
             `tasks`.`contact_id`,
             `tasks`.`project_id`,
-            `tasks`.`created_at`,
+            UNIX_TIMESTAMP(`tasks`.`created_at`) as created_at,
             `tasks`.`updated_at`,
             `projects`.`title` as ptitle
             FROM `tasks`
@@ -59,12 +59,12 @@ class TaskResource extends Base
         SELECT `tasks`.`id`,
 	       `tasks`.`title`,
            `tasks`.`desc`,
-           `tasks`.`begin`,
-           `tasks`.`end`,
+           UNIX_TIMESTAMP(`tasks`.`begin`) as begin,
+           UNIX_TIMESTAMP(`tasks`.`end`) as end,
            `tasks`.`status`,
            `tasks`.`contact_id`,
            `tasks`.`project_id`,
-           `tasks`.`created_at`,
+           UNIX_TIMESTAMP(`tasks`.`created_at`) as created_at,
            `tasks`.`updated_at`,
            `projects`.`title` as ptitle
            FROM `tasks`
@@ -98,12 +98,12 @@ class TaskResource extends Base
         SELECT `tasks`.`id`,
         	`tasks`.`title`,
             `tasks`.`desc`,
-            `tasks`.`begin`,
-            `tasks`.`end`,
+            UNIX_TIMESTAMP(`tasks`.`begin`) as begin,
+            UNIX_TIMESTAMP(`tasks`.`end`) as end,
             `status`.`desc` as status,
             `tasks`.`contact_id`,
             `tasks`.`project_id`,
-            `tasks`.`created_at`,
+            UNIX_TIMESTAMP(`tasks`.`created_at`) as created_at,
             `tasks`.`updated_at`
             FROM `tasks`
             LEFT JOIN `status` ON `status`.`id` = `tasks`.`status`

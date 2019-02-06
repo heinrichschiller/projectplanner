@@ -2,6 +2,8 @@
 
 namespace Model;
 
+use \Util\Date;
+
 class TaskModel
 {
     private $_id = 0;
@@ -108,7 +110,7 @@ class TaskModel
      */
     public function setBegin($begin)
     {
-        $this->_begin = $begin;
+        $this->_begin = Date::getInstance()->formatDateTime($begin);
 
         return $this;
     }
@@ -132,7 +134,7 @@ class TaskModel
      */
     public function setEnd($end)
     {
-        $this->_end = $end;
+        $this->_end = Date::getInstance()->formatDateTime($end);
 
         return $this;
     }

@@ -2,6 +2,8 @@
 
 namespace Model;
 
+use \Util\Date;
+
 class ProjectModel
 {
     private $_id = 0;
@@ -9,6 +11,7 @@ class ProjectModel
     private $_desc = '';
     private $_begin = '';
     private $_end = '';
+    private $_statusId = 0;
     private $_status = '';
     private $_contactId = '';
     private $_contact = '';
@@ -106,7 +109,7 @@ class ProjectModel
      */
     public function setBegin($_begin)
     {
-        $this->_begin = $_begin;
+        $this->_begin = Date::getInstance()->formatDateTime($_begin);
 
         return $this;
     }
@@ -130,11 +133,20 @@ class ProjectModel
      */
     public function setEnd($_end)
     {
-        $this->_end = $_end;
+        $this->_end = Date::getInstance()->formatDateTime($_end);
 
         return $this;
     }
 
+    public function getStatusId()
+    {
+        return $this->_statusId;
+    }
+
+    public function setStatusId($id)
+    {
+        $this->_statusId = $id;
+    }
     /**
      * Get the value of Status
      *
@@ -224,9 +236,9 @@ class ProjectModel
      *
      * @return self
      */
-    public function setCreatedAt($_createdAt)
+    public function setCreatedAt($createdAt)
     {
-        $this->_createdAt = $_createdAt;
+        $this->_createdAt = Date::getInstance()->formatDateTime($createdAt);
 
         return $this;
     }

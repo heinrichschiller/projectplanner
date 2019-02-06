@@ -1,27 +1,29 @@
-$(document).ready(function() {
+$(function() {
     $("#tasks-table td:contains('Angelegt')").addClass("task-active");
     $("#tasks-table td:contains('In Bearbeitung')").addClass("task-inprocessing");
     $("#tasks-table td:contains('Warten')").addClass("task-active");
     $("#tasks-table td:contains('Abgeschlossen')").addClass("task-done");
     $("#tasks-table td:contains('Eingestellt')").addClass("task-suspend");
-});
 
-$(document).ready(function() {
     $("#tasks-table td:contains('Niedrig')").addClass("not-important");
     $("#tasks-table td:contains('In Plannung')").addClass("in-planning");
     $("#tasks-table td:contains('Sehr Hoch')").addClass("very-important");
-});
 
-$(document).ready(function() {
     $("#projects-table td:contains('Angelegt')").addClass("project-active");
     $("#projects-table td:contains('In Bearbeitung')").addClass("project-inprocessing");
     $("#projects-table td:contains('Warten')").addClass("task-active");
     $("#projects-table td:contains('Abgeschlossen')").addClass("task-active");
     $("#projects-table td:contains('Eingestellt')").addClass("task-active");
-});
 
-$(document).ready(function() {
     $("#projects-table td:contains('Niedrig')").addClass("not-important");
     $("#projects-table td:contains('In Plannung')").addClass("in-planning");
     $("#projects-table td:contains('Sehr Hoch')").addClass("very-important");
+
+    $("table tr").click(function() {
+        var href = $(this).find("a").attr("href");
+
+        if(href) {
+            window.location = href;
+        }
+    });
 });

@@ -84,7 +84,7 @@ class Bootstrap
         if (empty($this->_params)) {
             $this->_params = [];
         }
-        
+
         $ctrlObj = new $this->_controller;
         $ctrlObj->{$this->_action}($this->_params);
     }

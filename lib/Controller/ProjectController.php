@@ -49,6 +49,30 @@ class ProjectController extends Base
         header('Location: ' . \App::getBaseUrl() . 'project/index');
     }
 
+    public function editAction($params) {
+        User::checkLogin();
+
+        $contact = new ContactResource();
+        $project = new ProjectResource();
+        $task    = new TaskResource();
+
+        $projectList = $project->getProject($params['id']);
+
+        $id = $projectList->getContactId();
+        $contactList = $contact->getContact($id);
+        $taskList = $task->getContactTasks($params['id']);
+        $statusList = HtmlFormHelper::getInstance()->getStatusList();
+
+        $list = [
+            'contact' => $contactList,
+            'project'  => $projectList,
+            'tasks'    => $taskList,
+            'statusList' => $statusList
+        ];
+
+        echo $this->render('project.phtml', $list);
+    }
+
     public function viewAction($params)
     {
         User::checkLogin();
