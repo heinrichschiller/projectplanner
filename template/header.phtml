@@ -1,3 +1,18 @@
+<nav>
+    <ul class="pp-nav" role="navigation">
+        <li><a href="<?= \App::getBaseUrl(); ?>index/main">Dashboard</a></li>
+        <li><a href="<?= \App::getBaseUrl(); ?>contact/index">Kontakte</a></li>
+        <li><a href="<?= \App::getBaseUrl(); ?>project/index">Projekte</a></li>
+        <li><a href="<?= \App::getBaseUrl(); ?>task/index">Aufgaben</a></li>
+        <li>
+            <?php if(\Session\User::isLoggedIn()): ?>
+                <a href="<?= \App::getBaseUrl(); ?>index/login">Abmelden</a>
+            <?php else: ?>
+                <a href="<?= \App::getBaseUrl(); ?>index/login">Anmelden</a>
+            <?php endif; ?>
+        </li>
+    </ul>
+</nav>
 <header>
     <h1>Project-Planner</h1>
 </header>

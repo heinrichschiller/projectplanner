@@ -13,15 +13,14 @@
         </thead>
         <tbody>
           <?php foreach($contacts as $contact): ?>
-              <tr>
+              <tr class="clickable-row" data-href="<?= \App::getBaseUrl(); ?>contact/view/id/<?php echo $contact->getId(); ?>">
                   <td><?php echo $contact->getId(); ?></td>
                   <td><?php echo $contact->getName(); ?></td>
                   <td><?php echo $contact->getFirstname() . '&nbsp;'
                     . $contact->getLastname(); ?></td>
                   <td><?php echo $contact->getCity(); ?></td>
                   <td><?php echo $contact->getPhone(); ?></td>
-                  <td><a class="workaround" href="<?php echo \App::getBaseUrl(); ?>contact/view/id/<?php echo $contact->getId(); ?>">Übersicht</a></td>
-                  <td><a class="workaround" href="<?php echo \App::getBaseUrl(); ?>contact/edit/id/<?php echo $contact->getId(); ?>">Bearbeiten</a></td>
+                  <td><a class="workaround" href="<?= \App::getBaseUrl(); ?>contact/edit/id/<?php echo $contact->getId(); ?>">Bearbeiten</a></td>
               </tr>
           <?php endforeach; ?>
         </tbody>

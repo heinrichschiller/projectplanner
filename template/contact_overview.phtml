@@ -1,5 +1,5 @@
 <div>
-    <form action="<?= \App::getBaseUrl(); ?>contact/update" method="post">
+    <form action="<?= \App::getBaseUrl(); ?>contact/edit" method="post">
         <br>
         <div>
             <h2>Kontakt</h2>
@@ -26,75 +26,88 @@
             <label for="email">Email:</label>
             <span><?= $contact->getPhone(); ?></span>
         </div>
-        <div class="container">
-            <!-- Projektübersicht -->
-            <div class="projects">
-                <h2>Projektübersicht</h2><hr>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Projektname</th>
-                            <th>Begin</th>
-                            <th>Ende</th>
-                            <th>Status</th>
-                            <th>Erstellt am</th>
-                            <th colspan="2">Aktionen</th>
-                        </tr>
-                    </thead>
-                    <tbody id="projects-table">
-                      <?php foreach($projects as $project): ?>
-                          <tr>
-                              <td><?= $project->getId(); ?></td>
-                              <td><?= $project->getTitle(); ?></td>
-                              <td><?= $project->getBegin(); ?></td>
-                              <td><?= $project->getEnd(); ?></td>
-                              <td><?= $project->getStatus(); ?></td>
-                              <td><?= $project->getCreatedAt(); ?></td>
-                              <td><a href="<?= \App::getBaseUrl(); ?>project/view/id/<?= $project->getId(); ?>">Übersicht</a></td>
-                              <td><a href="<?= \App::getBaseUrl(); ?>project/edit/id/<?= $project->getId(); ?>">Bearbeiten</a></td>
-                          </tr>
-                      <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
-            <!-- Projektübersicht -->
-            <!-- Aufgabenübersicht -->
-            <div class="tasks">
-                <h2>Aufgabenübersicht</h2><hr>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Titel</th>
-                            <th>Begin</th>
-                            <th>Ende</th>
-                            <th>Status</th>
-                            <th colspan="2">Aktionen</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tasks-table">
-                      <?php foreach($tasks as $task): ?>
-                          <tr>
-                              <td><?= $task->getId(); ?></td>
-                              <td><?= $task->getTitle(); ?></td>
-                              <td><?= $task->getBegin(); ?></td>
-                              <td><?= $task->getEnd(); ?></td>
-                              <td><?= $task->getStatus(); ?></td>
-                              <td><a href="<?= \App::getBaseUrl(); ?>task/view/id/<?= $task->getId(); ?>">Übersicht</a></td>
-                              <td><a href="<?= \App::getBaseUrl(); ?>task/edit/id/<?= $task->getId(); ?>">Bearbeiten</a></td>
-                          </tr>
-                      <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
-            <!-- Aufgabenübersicht -->
-        </div>
         <div class="button-row">
-            <button type="submit" class="button">Speichern</button>&nbsp;&nbsp;
             <button type="submit" class="button">Bearbeiten</button>&nbsp;&nbsp;
-            <button type="submit" class="button">Löschen</button>
-            <button type="submit" class="button">Abbrechen</button>
         </div>
     </form>
+    <div class="container">
+        <!-- Projektübersicht -->
+        <div class="projects">
+            <h2>Projektübersicht</h2><hr>
+            <?php if(isset($projects)): ?>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Projektname</th>
+                        <th>Begin</th>
+                        <th>Ende</th>
+                        <th>Status</th>
+                        <th>Erstellt am</th>
+                        <th colspan="2">Aktionen</th>
+                    </tr>
+                </thead>
+                <tbody id="projects-table">
+                  <?php foreach($projects as $project): ?>
+                      <tr class="clickable-row" data-href="<?= \App::getBaseUrl(); ?>project/view/id/<?= $project->getId(); ?>">
+                          <td><?= $project->getId(); ?></td>
+                          <td><?= $project->getTitle(); ?></td>
+                          <td><?= $project->getBegin(); ?></td>
+                          <td><?= $project->getEnd(); ?></td>
+                          <td><?= $project->getStatus(); ?></td>
+                          <td><?= $project->getCreatedAt(); ?></td>
+                          <td class="action-button"><a href="<?= \App::getBaseUrl(); ?>project/edit/id/<?= $project->getId(); ?>">Bearbeiten</a></td>
+                      </tr>
+                  <?php endforeach; ?>
+                </tbody>
+            </table>
+            <?php else: ?>
+            <div>
+                <p>Es wurden noch keine Projekte erstellt.</p>
+                <div>
+                    <a href="<?= \App::getBaseUrl(); ?>project/new" class="button">Anlegen</a>
+                </div>
+            </div>
+            <?php endif; ?>
+        </div>
+        <!-- Projektübersicht -->
+        <!-- Aufgabenübersicht -->
+        <div class="tasks">
+            <h2>Aufgabenübersicht</h2><hr>
+            <?php if(isset($tasks)): ?>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Titel</th>
+                        <th>Begin</th>
+                        <th>Ende</th>
+                        <th>Status</th>
+                        <th colspan="2">Aktionen</th>
+                    </tr>
+                </thead>
+                <tbody id="tasks-table">
+                  <?php foreach($tasks as $task): ?>
+                      <tr class="clickable-row" data-href="<?= \App::getBaseUrl(); ?>task/view/id/<?= $task->getId(); ?>">
+                          <td><?= $task->getId(); ?></td>
+                          <td><?= $task->getTitle(); ?></td>
+                          <td><?= $task->getBegin(); ?></td>
+                          <td><?= $task->getEnd(); ?></td>
+                          <td><?= $task->getStatus(); ?></td>
+                          <td class="action-button"><a href="<?= \App::getBaseUrl(); ?>task/edit/id/<?= $task->getId(); ?>">Bearbeiten</a></td>
+                      </tr>
+                  <?php endforeach; ?>
+                </tbody>
+            </table>
+            <?php else: ?>
+            <div>
+                <p>Es wurden noch keine Projekte erstellt.</p>
+                <div>
+                    <a href="<?= \App::getBaseUrl(); ?>task/new" class="button">Anlegen</a>
+                </div>
+            </div>
+            <?php endif; ?>
+        </div>
+        <!-- Aufgabenübersicht -->
+    </div>
 </div>

@@ -20,6 +20,8 @@
         <div>
             <label for="firstname">Vorname:</label>
             <input type="text" name="firstname" value="<?= isset($contact) ? $contact->getFirstname() : ''; ?>" id="firstname">
+        </div>
+        <div>
             <label for="lastname">Nachname:</label>
             <input type="text" name="lastname" value="<?= isset($contact) ? $contact->getLastname() : ''; ?>" id="lastname">
         </div>

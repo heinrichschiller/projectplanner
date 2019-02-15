@@ -15,7 +15,7 @@
         </thead>
         <tbody id="projects-table">
           <?php foreach($projects as $project): ?>
-              <tr>
+              <tr class="clickable-row" data-href="<?= \App::getBaseUrl(); ?>project/view/id/<?= $project->getId(); ?>">
                   <td><?= $project->getId(); ?></td>
                   <td><?= $project->getTitle(); ?></td>
                   <td><?= $project->getBegin(); ?></td>
@@ -23,7 +23,6 @@
                   <td><?= $project->getStatus(); ?></td>
                   <td>-</td>
                   <td><?= $project->getCreatedAt(); ?></td>
-                  <td><a href="<?= \App::getBaseUrl(); ?>project/view/id/<?= $project->getId(); ?>"></a></td>
                   <td><a href="<?= \App::getBaseUrl(); ?>project/edit/id/<?= $project->getId(); ?>">Bearbeiten</a></td>
               </tr>
           <?php endforeach; ?>
