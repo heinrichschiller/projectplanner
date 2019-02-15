@@ -61,7 +61,7 @@ class TaskResource extends Base
            `tasks`.`desc`,
            UNIX_TIMESTAMP(`tasks`.`begin`) as begin,
            UNIX_TIMESTAMP(`tasks`.`end`) as end,
-           `tasks`.`status`,
+           `status`.`desc` as status,
            `tasks`.`contact_id`,
            `tasks`.`project_id`,
            UNIX_TIMESTAMP(`tasks`.`created_at`) as created_at,
@@ -69,7 +69,8 @@ class TaskResource extends Base
            `projects`.`title` as ptitle
            FROM `tasks`
            LEFT JOIN `projects` ON `projects`.`id` = `tasks`.`project_id`
-            WHERE `tasks`.`id` = $id;
+           LEFT JOIN `status` ON `status`.`id` = `tasks`.`status`
+           WHERE `tasks`.`id` = $id;
         ";
 
         $dbResult = $this->connect()->query($sql);
