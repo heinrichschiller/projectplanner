@@ -41,7 +41,7 @@ select {
 }
 
 label {
-    width: 6em;
+    width: 6.4em;
     display: inline-block;
 }
 
@@ -58,6 +58,10 @@ input[type="datetime-local"] {
 fieldset {
     border: 1px solid rgba(128,128,128,0.5);
     border-radius: 0.2em;
+}
+
+fieldset label {
+    width: 5.4em;
 }
 
 table {
@@ -131,6 +135,17 @@ textarea {
 .button-light {
     color: black;
     text-decoration: none;
+}
+
+.action-button {
+    background-color: rgb(29, 78, 137);
+    text-align: center;
+}
+
+.action-button a {
+    display: block;
+    text-decoration: none;
+    color: #fefefe;
 }
 
 .element-pos-right {
