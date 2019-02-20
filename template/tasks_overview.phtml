@@ -25,7 +25,7 @@
                   <td><?= $task->getStatus(); ?></td>
                   <td><?= $task->getPriority(); ?></td>
                   <td>-</td>
-                  <td><a href="<?= \App::getBaseUrl(); ?>task/edit/id/<?= $task->getId(); ?>">Bearbeiten</a></td>
+                  <td class="action-button"><a href="<?= \App::getBaseUrl(); ?>task/edit/id/<?= $task->getId(); ?>">Bearbeiten</a></td>
               </tr>
           <?php endforeach; ?>
         </tbody>

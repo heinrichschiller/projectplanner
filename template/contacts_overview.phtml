@@ -20,7 +20,7 @@
                     . $contact->getLastname(); ?></td>
                   <td><?php echo $contact->getCity(); ?></td>
                   <td><?php echo $contact->getPhone(); ?></td>
-                  <td><a class="workaround" href="<?= \App::getBaseUrl(); ?>contact/edit/id/<?php echo $contact->getId(); ?>">Bearbeiten</a></td>
+                  <td class="action-button"><a href="<?= \App::getBaseUrl(); ?>contact/edit/id/<?php echo $contact->getId(); ?>">Bearbeiten</a></td>
               </tr>
           <?php endforeach; ?>
         </tbody>

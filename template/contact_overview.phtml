@@ -1,35 +1,32 @@
 <div>
-    <form action="<?= \App::getBaseUrl(); ?>contact/edit" method="post">
-        <br>
-        <div>
-            <h2>Kontakt</h2>
-        </div>
-        <div>
-            <label for="name">Kontakt:</label>
-            <span><?= $contact->getName(); ?></span>
-        </div>
-        <div>
-            <label for="firstname">Vorname:</label>
-            <span><?= $contact->getFirstname(); ?></span>
-            <label for="lastname">Nachname:</label>
-            <span><?= $contact->getLastname(); ?></span>
-        </div>
-        <div>
-            <label for="city">Ort:</label>
-            <span><?= $contact->getCity(); ?></span>
-        </div>
-        <div>
-            <label for="phone">Telefon:</label>
-            <span><?= $contact->getPhone(); ?></span>
-        </div>
-        <div>
-            <label for="email">Email:</label>
-            <span><?= $contact->getPhone(); ?></span>
-        </div>
-        <div class="button-row">
-            <button type="submit" class="button">Bearbeiten</button>&nbsp;&nbsp;
-        </div>
-    </form>
+    <div>
+        <h2>Kontakt</h2>
+    </div>
+    <div>
+        <label for="name">Kontakt:</label>
+        <span><?= $contact->getName(); ?></span>
+    </div>
+    <div>
+        <label for="firstname">Vorname:</label>
+        <span><?= $contact->getFirstname(); ?></span>
+        <label for="lastname">Nachname:</label>
+        <span><?= $contact->getLastname(); ?></span>
+    </div>
+    <div>
+        <label for="city">Ort:</label>
+        <span><?= $contact->getCity(); ?></span>
+    </div>
+    <div>
+        <label for="phone">Telefon:</label>
+        <span><?= $contact->getPhone(); ?></span>
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <span><?= $contact->getPhone(); ?></span>
+    </div>
+    <div class="button-row">
+        <a class="button" href="<?= \App::getBaseUrl(); ?>contact/edit/id/<?= $contact->getId(); ?>">Bearbeiten</a>
+    </div>
     <div class="container">
         <!-- Projektübersicht -->
         <div class="projects">
