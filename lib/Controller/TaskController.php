@@ -18,18 +18,18 @@ class TaskController extends Base
 
         $tasks = $task->getTasks();
 
-        echo $this->render('tasks_overview.phtml', array('tasks' => $tasks));
+        return $this->render('tasks_overview.phtml', array('tasks' => $tasks));
     }
 
-    public function newAction()
+    public function newAction($params)
     {
         User::checkLogin();
 
         $contacts = new ContactResource();
-        $projects  = new ProjectResource();
+        $projects = new ProjectResource();
 
         $contactList = $contacts->getContacts();
-        $projectsList = $projects->getProjects();
+        $projectsList = $projects->getProjects();        
         $statusList = HtmlFormHelper::getInstance()->getStatusList();
 
         $list = [
@@ -38,7 +38,12 @@ class TaskController extends Base
             'statusList' => $statusList
         ];
 
-        echo $this->render('task.phtml', $list);
+        if(!empty($params)) {
+            //$project = $projects->getProject($params['id']);
+            $list['projectId'] = $params['id'];
+        }
+
+        return $this->render('task.phtml', $list);
     }
 
     public function editAction($params)
@@ -50,14 +55,16 @@ class TaskController extends Base
         $project = new ProjectResource();
 
         $taskItem = $task->getTask($params['id']);
+        $statusList = HtmlFormHelper::getInstance()->getStatusList();
 
         $list = [
-            'task'    => $taskItem,
-            'contact' => $contact->getContact($taskItem->getContactId()),
-            'project' => $project->getProject($taskItem->getProjectId())
+            'task'       => $taskItem,
+            'contact'    => $contact->getContact($taskItem->getContactId()),
+            'project'    => $project->getProject($taskItem->getProjectId()),
+            'statusList' => $statusList
         ];
 
-        echo $this->render('task.phtml', $list);
+        return $this->render('task.phtml', $list);
     }
 
     public function addAction()
@@ -87,7 +94,7 @@ class TaskController extends Base
             'project' => $project->getProject($taskItem->getProjectId())
         ];
 
-        echo $this->render('task_overview.phtml', $list);
+        return $this->render('task_overview.phtml', $list);
     }
 
     public function deleteAction(array $params)
