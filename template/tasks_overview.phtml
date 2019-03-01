@@ -19,11 +19,11 @@
               <tr class="clickable-row" data-href="<?= \App::getBaseUrl(); ?>task/view/id/<?= $task->getId(); ?>">
                   <td><?= $task->getId(); ?></td>
                   <td><?= $task->getTitle(); ?></td>
-                  <td>-</td>
-                  <td><?= $task->getBegin(); ?></td>
-                  <td><?= $task->getEnd(); ?></td>
-                  <td><?= $task->getStatus(); ?></td>
-                  <td><?= $task->getPriority(); ?></td>
+                  <td><?= $task->getProjectTitle(); ?></td>
+                  <td class="td_begin"><?= $task->getBegin(); ?></td>
+                  <td class="td_end"><?= $task->getEnd(); ?></td>
+                  <td class="td_status"><?= $task->getStatus(); ?></td>
+                  <td class="td_priority"><?= $task->getPriority(); ?></td>
                   <td>-</td>
                   <td class="action-button"><a href="<?= \App::getBaseUrl(); ?>task/edit/id/<?= $task->getId(); ?>">Bearbeiten</a></td>
               </tr>

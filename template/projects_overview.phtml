@@ -18,11 +18,11 @@
               <tr class="clickable-row" data-href="<?= \App::getBaseUrl(); ?>project/view/id/<?= $project->getId(); ?>">
                   <td><?= $project->getId(); ?></td>
                   <td><?= $project->getTitle(); ?></td>
-                  <td><?= $project->getBegin(); ?></td>
-                  <td><?= $project->getEnd(); ?></td>
-                  <td><?= $project->getStatus(); ?></td>
+                  <td class="td_begin"><?= $project->getBegin(); ?></td>
+                  <td class="td_end"><?= $project->getEnd(); ?></td>
+                  <td class="td_status"><?= $project->getStatus(); ?></td>
                   <td>-</td>
-                  <td><?= $project->getCreatedAt(); ?></td>
+                  <td class="td_createdAt"><?= $project->getCreatedAt(); ?></td>
                   <td class="action-button"><a href="<?= \App::getBaseUrl(); ?>project/edit/id/<?= $project->getId(); ?>">Bearbeiten</a></td>
               </tr>
           <?php endforeach; ?>

@@ -30,7 +30,10 @@
     <div class="container">
         <!-- Projektübersicht -->
         <div class="projects">
-            <h2>Projektübersicht</h2><hr>
+            <h2>Projektübersicht
+                <span class="element-pos-right"><a class="button-light" href="<?= \App::getBaseUrl(); ?>project/new" title="Neue Aufgabe anlegen.">+</a></span>
+                <hr>
+            </h2>
             <?php if(isset($projects)): ?>
             <table>
                 <thead>
@@ -70,13 +73,17 @@
         <!-- Projektübersicht -->
         <!-- Aufgabenübersicht -->
         <div class="tasks">
-            <h2>Aufgabenübersicht</h2><hr>
+            <h2>Aufgabenübersicht
+                <span class="element-pos-right"><a class="button-light" href="<?= \App::getBaseUrl(); ?>task/new" title="Neue Aufgabe anlegen.">+</a></span>
+                <hr>
+            </h2>
             <?php if(isset($tasks)): ?>
             <table>
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>Titel</th>
+                        <th>Projekt</th>
                         <th>Begin</th>
                         <th>Ende</th>
                         <th>Status</th>
@@ -88,6 +95,7 @@
                       <tr class="clickable-row" data-href="<?= \App::getBaseUrl(); ?>task/view/id/<?= $task->getId(); ?>">
                           <td><?= $task->getId(); ?></td>
                           <td><?= $task->getTitle(); ?></td>
+                          <td><?= $task->getProjectTitle(); ?></td>
                           <td><?= $task->getBegin(); ?></td>
                           <td><?= $task->getEnd(); ?></td>
                           <td><?= $task->getStatus(); ?></td>

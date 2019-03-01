@@ -19,14 +19,14 @@
             <label for="contact">Kontakt:</label>
             <select id="contact" name="contactId">
                 <?php foreach ($contacts as $contact): ?>
-                <option value="<?php echo $contact->getId(); ?>"><?= $contact->getName(); ?></option>
+                <option value="<?= $contact->getId(); ?>"><?= $contact->getName(); ?></option>
                 <?php endforeach; ?>
             </select>
         <div>
             <label for="project">Projekt.:</label>
-            <select id="contact" name="projectId">
+            <select id="project" name="projectId">
                 <?php foreach ($projects as $project): ?>
-                <option value="<?php echo $project->getId(); ?>"><?= $project->getTitle(); ?></option>
+                <option value="<?= $project->getId(); ?>" <?= (isset($projectId) && $projectId == $project->getId()) ? ' selected' : ''; ?>><?= $project->getTitle(); ?></option>
                 <?php endforeach; ?>
             </select>
         </div>
@@ -37,7 +37,7 @@
         <div>
             <label for="begin">Anfang:</label>
             <?php if(isset($task)): ?>
-            <input type="datetime-local" name="begin" value="<?= $task->getBegin(); ?>" id="begin">
+            <input type="date" name="begin" value="<?= $task->getBegin(); ?>" id="begin">
             <?php else: ?>
             <input type="date" name="begin" id="begin">
             <?php endif; ?>
@@ -48,7 +48,11 @@
             <label for="status">Status:</label>
             <select id="status" name="status">
                 <?php foreach ($statusList as $status): ?>
+                    <?php if(isset($task)): ?>
+                    <option value="<?= $status['id']; ?>" <?= ($status['id'] == $task->getStatusId()) ? ' selected' : ''; ?>><?= $status['desc']; ?></option>
+                    <?php else: ?>
                     <option value="<?= $status['id']; ?>"><?= $status['desc']; ?></option>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             </select>
         </div>

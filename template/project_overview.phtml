@@ -3,35 +3,38 @@
 </div>
 <div>
 	<label for="name">Titel:</label>
-	<input type="text" value="<?= $project->getTitle(); ?>" id="name" disabled>
+	<span><?= $project->getTitle(); ?></span>
 </div>
 <div>
 	<label for="contact">Kontakt:</label>
-	<input type="text" value="<?= $contact->getName(); ?>" id="contact" disabled>
+	<span><?= $contact->getName(); ?></span>
 </div>
 <div>
 	<label for="contact">Ansprechp.:</label>
-	<input type="text" value="<?= $contact->getFirstname() . '&nbsp;' . $contact->getLastname(); ?>" id="name" disabled>
+	<span><?= $contact->getFirstname() . '&nbsp;' . $contact->getLastname(); ?></span>
 </div>
 <div>
 	<label for="desc">Beschreibung:</label>
-	<textarea id="desc" disabled><?= $project->getDesc(); ?></textarea>
+	<span><?= $project->getDesc(); ?></span>
 </div>
 <div>
 	<label for="begin">Anfang:</label>
-	<input type="datetime-local" value="<?= $project->getBegin(); ?>" id="begin" disabled>
+	<span><?= $project->getBegin(); ?></span>
 	<label for="end">Ende:</label>
-	<input type="datetime-local" value="<?= $project->getEnd(); ?>" id="end" disabled>
+	<span><?= $project->getEnd(); ?></span>
 </div>
 <div>
 	<label for="status">Status:</label>
-	<input type="text" value="<?= $project->getStatus(); ?>" id="name" disabled>
+	<span><?= $project->getStatus(); ?></span>
+</div>
+<div class="button-row">
+	<a class="button" href="<?= \App::getBaseUrl(); ?>project/edit/id/<?= $project->getId(); ?>">Bearbeiten</a>
 </div>
 <!-- Aufgabenübersicht -->
 <div>
 	<div>
 		<h2>Aufgabenübersicht
-			<span class="element-pos-right"><a class="button-light" href="<?= \App::getBaseUrl(); ?>task/new" title="Neue Aufgabe anlegen.">+</a></span>
+			<span class="element-pos-right"><a class="button-light" href="<?= \App::getBaseUrl(); ?>task/new/id/<?= $project->getId(); ?>" title="Neue Aufgabe anlegen.">+</a></span>
 			<hr>
 		</h2>
 	</div>
@@ -53,14 +56,14 @@
 			<tr class="clickable-row" data-href="<?= \App::getBaseUrl(); ?>task/view/id/<?= $task->getId(); ?>">
 				<td><?= $task->getId(); ?></td>
 				<td><?= $task->getTitle(); ?></td>
-				<td><?= $task->getBegin(); ?></td>
-				<td><?= $task->getEnd(); ?></td>
-				<td><?= $task->getStatus(); ?></td>
-				<td>-</td>
+				<td class="td_begin"><?= $task->getBegin(); ?></td>
+				<td class="td_end"><?= $task->getEnd(); ?></td>
+				<td class="td_status"><?= $task->getStatus(); ?></td>
+				<td class="td_priority"><?= $task->getPriority(); ?></td>
 				<td>-</td>
 				<td><a href="<?= \App::getBaseUrl(); ?>task/edit/id/<?= $task->getId(); ?>">Bearbeiten</a></td>
 			</tr>
 			<?php endforeach; ?>
 	   </tbody>
-</table>
+	</table>
 </div>
