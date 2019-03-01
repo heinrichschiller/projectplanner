@@ -86,6 +86,6 @@ class Bootstrap
         }
 
         $ctrlObj = new $this->_controller;
-        $ctrlObj->{$this->_action}($this->_params);
+        echo $ctrlObj->{$this->_action}($this->_params);
     }
 }
