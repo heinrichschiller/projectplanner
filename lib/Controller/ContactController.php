@@ -17,14 +17,14 @@ class ContactController extends Base
 
         $contacts = $contact->getContacts();
 
-        echo $this->render('contacts_overview.phtml', array('contacts' => $contacts));
+        return $this->render('contacts_overview.phtml', array('contacts' => $contacts));
     }
 
     public function newAction($params)
     {
         User::checkLogin();
 
-        echo $this->render('contact.phtml');
+        return $this->render('contact.phtml');
     }
 
     public function addAction($params)
@@ -56,7 +56,7 @@ class ContactController extends Base
             'tasks'    => $tasks
         ];
 
-        echo $this->render('contact_overview.phtml', $list);
+        return $this->render('contact_overview.phtml', $list);
     }
 
     public function editAction($params)
@@ -69,7 +69,7 @@ class ContactController extends Base
             'contact' => $contact->getContact($params['id'])
         ];
 
-        echo $this->render('contact.phtml', $list);
+        return $this->render('contact.phtml', $list);
     }
 
     public function deleteAction($params)

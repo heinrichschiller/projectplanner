@@ -18,7 +18,7 @@ class ProjectController extends Base
 
         $projectList = $project->getProjects();
 
-        echo $this->render('projects_overview.phtml', array('projects' => $projectList));
+        return $this->render('projects_overview.phtml', array('projects' => $projectList));
     }
 
     public function newAction($params)
@@ -35,7 +35,7 @@ class ProjectController extends Base
             'statusList'   => $statusList
         ];
 
-        echo $this->render('project.phtml', $list);
+        return $this->render('project.phtml', $list);
     }
 
     public function addAction()
@@ -70,7 +70,7 @@ class ProjectController extends Base
             'statusList' => $statusList
         ];
 
-        echo $this->render('project.phtml', $list);
+        return $this->render('project.phtml', $list);
     }
 
     public function viewAction($params)
@@ -85,7 +85,7 @@ class ProjectController extends Base
 
         $id = $projectList->getContactId();
         $contactList = $contact->getContact($id);
-        $taskList = $task->getContactTasks($params['id']);
+        $taskList = $task->getProjectTasks($params['id']);
 
         $list = [
             'contact' => $contactList,
@@ -93,6 +93,6 @@ class ProjectController extends Base
             'tasks'    => $taskList
         ];
 
-        echo $this->render('project_overview.phtml', $list);
+        return $this->render('project_overview.phtml', $list);
     }
 }

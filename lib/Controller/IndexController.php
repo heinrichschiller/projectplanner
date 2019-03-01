@@ -17,7 +17,7 @@ class IndexController extends Base
             }
         }
 
-        echo $this->render('login.phtml');
+        return $this->render('login.phtml');
     }
 
     public function logoutAction($params)
@@ -47,6 +47,6 @@ class IndexController extends Base
             'tasks' => $tasks
         ];
 
-        echo $this->render('mainpage.phtml',$list);
+        return $this->render('mainpage.phtml',$list);
     }
 }
