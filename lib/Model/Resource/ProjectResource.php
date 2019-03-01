@@ -13,13 +13,15 @@ class ProjectResource extends Base
         	`projects`.`title`,
         	`projects`.`desc`,
         	UNIX_TIMESTAMP(`projects`.`begin`) as begin,
-        	UNIX_TIMESTAMP(`projects`.`end`) as end,
+            UNIX_TIMESTAMP(`projects`.`end`) as end,
+            `priority`.`desc` as priority,
         	`status`.`desc` as status,
         	`projects`.`contact_id`,
         	UNIX_TIMESTAMP(`projects`.`created_at`) as created_at
         	FROM `projects`
-            LEFT JOIN `status` ON `status`.`id` = `projects`.`status`
+            LEFT JOIN `status` ON `status`.`id` = `projects`.`status_id`
             LEFT JOIN `contact` ON `contact`.`id` = `projects`.`contact_id`
+            LEFT JOIN `priority` ON `priority`.`id` = `projects`.`priority_id`
         ';
 
         $dbResult = $this->connect()->query($sql);
@@ -34,6 +36,7 @@ class ProjectResource extends Base
             $project->setDesc($row->desc);
             $project->setBegin($row->begin);
             $project->setEnd($row->end);
+            $project->setPriority($row->priority);
             $project->setStatus($row->status);
             $project->setContactId($row->contact_id);
             $project->setCreatedAt($row->created_at);
@@ -52,12 +55,12 @@ class ProjectResource extends Base
         	`projects`.`desc`,
             UNIX_TIMESTAMP(`projects`.`begin`) as begin,
         	UNIX_TIMESTAMP(`projects`.`end`) as end,
-            `projects`.`status` as statusId,
+            `projects`.`status_id` as statusId,
         	`status`.`desc` as status,
         	`projects`.`contact_id`,
         	UNIX_TIMESTAMP(`projects`.`created_at`) as created_at
         	FROM `projects`
-            LEFT JOIN `status` ON `status`.`id` = `projects`.`status`
+            LEFT JOIN `status` ON `status`.`id` = `projects`.`status_id`
         	WHERE `projects`.`id` = $id
         ";
 

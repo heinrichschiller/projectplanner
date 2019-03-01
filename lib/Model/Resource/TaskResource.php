@@ -61,6 +61,7 @@ class TaskResource extends Base
            `tasks`.`desc`,
            UNIX_TIMESTAMP(`tasks`.`begin`) as begin,
            UNIX_TIMESTAMP(`tasks`.`end`) as end,
+           `status`.`id` as status_id,
            `status`.`desc` as status,
            `tasks`.`contact_id`,
            `tasks`.`project_id`,
@@ -83,6 +84,7 @@ class TaskResource extends Base
         $task->setDesc($row['desc']);
         $task->setBegin($row['begin']);
         $task->setEnd($row['end']);
+        $task->setStatusId($row['status_id']);
         $task->setStatus($row['status']);
         $task->setContactId($row['contact_id']);
         $task->setProjectId($row['project_id']);
@@ -105,29 +107,80 @@ class TaskResource extends Base
             `tasks`.`contact_id`,
             `tasks`.`project_id`,
             UNIX_TIMESTAMP(`tasks`.`created_at`) as created_at,
-            `tasks`.`updated_at`
+            `tasks`.`updated_at`,
+            `projects`.`title` as ptitle
             FROM `tasks`
             LEFT JOIN `status` ON `status`.`id` = `tasks`.`status`
-            WHERE `tasks`.`project_id` = $id
+            LEFT JOIN `projects` ON `projects`.`id` = `tasks`.`project_id`
+            WHERE `tasks`.`contact_id` = $id;
         ";
 
         $dbResult = $this->connect()->query($sql);
 
         $taskList = [];
 
-        while ($row = $dbResult->fetch(\PDO::FETCH_ASSOC)) {
+        while ($row = $dbResult->fetch(\PDO::FETCH_OBJ)) {
             $task = new TaskModel;
 
-            $task->setId($row['id']);
-            $task->setTitle($row['title']);
-            $task->setDesc($row['desc']);
-            $task->setBegin($row['begin']);
-            $task->setEnd($row['end']);
-            $task->setStatus($row['status']);
-            $task->setContactId($row['contact_id']);
-            $task->setProjectId($row['project_id']);
-            $task->setCreatedAt($row['created_at']);
-            $task->setUpdatedAt($row['updated_at']);
+            $task->setId($row->id);
+            $task->setTitle($row->title);
+            $task->setDesc($row->desc);
+            $task->setBegin($row->begin);
+            $task->setEnd($row->end);
+            $task->setStatus($row->status);
+            $task->setContactId($row->contact_id);
+            $task->setProjectId($row->project_id);
+            $task->setCreatedAt($row->created_at);
+            $task->setUpdatedAt($row->updated_at);
+            $task->setProjectTitle($row->ptitle);
+
+            $taskList[] = $task;
+        }
+
+        return $taskList;
+    }
+
+    public function getProjectTasks(int $id)
+    {
+        $sql = "
+        SELECT `tasks`.`id`,
+        	`tasks`.`title`,
+            `tasks`.`desc`,
+            UNIX_TIMESTAMP(`tasks`.`begin`) as begin,
+            UNIX_TIMESTAMP(`tasks`.`end`) as end,
+            `priority`.`desc` as priority,
+            `status`.`desc` as status,
+            `tasks`.`contact_id`,
+            `tasks`.`project_id`,
+            UNIX_TIMESTAMP(`tasks`.`created_at`) as created_at,
+            `tasks`.`updated_at`,
+            `projects`.`title` as ptitle
+            FROM `tasks`
+            LEFT JOIN `status` ON `status`.`id` = `tasks`.`status`
+            LEFT JOIN `projects` ON `projects`.`id` = `tasks`.`project_id`
+            LEFT JOIN `priority` ON `priority`.`id` = `tasks`.`priority`
+            WHERE `tasks`.`project_id` = $id;
+        ";
+
+        $dbResult = $this->connect()->query($sql);
+
+        $taskList = [];
+
+        while ($row = $dbResult->fetch(\PDO::FETCH_OBJ)) {
+            $task = new TaskModel;
+
+            $task->setId($row->id);
+            $task->setTitle($row->title);
+            $task->setDesc($row->desc);
+            $task->setBegin($row->begin);
+            $task->setEnd($row->end);
+            $task->setPriority($row->priority);
+            $task->setStatus($row->status);
+            $task->setContactId($row->contact_id);
+            $task->setProjectId($row->project_id);
+            $task->setCreatedAt($row->created_at);
+            $task->setUpdatedAt($row->updated_at);
+            $task->setProjectTitle($row->ptitle);
 
             $taskList[] = $task;
         }
