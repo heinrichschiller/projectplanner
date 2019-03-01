@@ -11,7 +11,8 @@ class TaskModel
     private $_desc = '';
     private $_begin = '';
     private $_end = '';
-    private $_status = 0;
+    private $_statusId = 0;
+    private $_status = '';
     private $_priority = '';
     private $_contactId = '';
     private $_projectId = '';
@@ -98,6 +99,10 @@ class TaskModel
      */
     public function getBegin()
     {
+        if($this->_begin == '01.01.1970 01:00') {
+            return 'Nicht festgelegt';
+        }
+
         return $this->_begin;
     }
 
@@ -122,6 +127,10 @@ class TaskModel
      */
     public function getEnd()
     {
+        if($this->_end == '01.01.1970 01:00') {
+            return 'Nicht festgelegt';
+        }
+        
         return $this->_end;
     }
 
@@ -135,6 +144,30 @@ class TaskModel
     public function setEnd($end)
     {
         $this->_end = Date::getInstance()->formatDateTime($end);
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Status
+     *
+     * @return mixed
+     */
+    public function getStatusId()
+    {
+        return $this->_statusId;
+    }
+
+    /**
+     * Set the value of Status
+     *
+     * @param mixed _statusId
+     *
+     * @return self
+     */
+    public function setStatusId($statusId)
+    {
+        $this->_statusId = $statusId;
 
         return $this;
     }
