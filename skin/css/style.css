@@ -13,14 +13,15 @@ h1 {
 }
 
 h2 {
-    width: 45.3em;
+    width: 51.9em;
 }
 
 nav {
-    background-color: #21252b;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    background-color: rgba(29, 78, 137, 1);
+    color: #fefefe;
 }
 
 ul {
@@ -28,12 +29,8 @@ ul {
     list-style: none;
 }
 
-header {
-    margin-top: -1.4em;
-    height: 50px;
-    line-height: 50px;
-    background-color: rgba(29, 78, 137, 1);
-    color: #fefefe;
+.header {
+    font-weight: bold;
 }
 
 select {
@@ -45,8 +42,7 @@ label {
     display: inline-block;
 }
 
-input[type="text"],
-input[type="email"] {
+input {
     width: 33em;
     height: 2rem;
 }
@@ -67,7 +63,7 @@ fieldset label {
 }
 
 table {
-    width: 68em;
+    width: 78em;
 }
 
 th {
@@ -142,6 +138,21 @@ textarea {
 .action-button {
     background-color: rgb(29, 78, 137);
     text-align: center;
+    width: 78px;
+}
+
+.td_begin,
+.td_end,
+.td_createdAt {
+    width: 118px;
+}
+
+.td_status {
+    width: 110px;
+}
+
+.td_priority {
+    width: 80px;
 }
 
 .action-button a {

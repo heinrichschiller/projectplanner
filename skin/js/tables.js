@@ -4,6 +4,7 @@ $(function() {
     $("#tasks-table td:contains('Warten')").addClass("task-active");
     $("#tasks-table td:contains('Abgeschlossen')").addClass("task-done");
     $("#tasks-table td:contains('Eingestellt')").addClass("task-suspend");
+    $("#tasks-table td:contains('Nicht festgelegt')").addClass("in-planning");
 
     $("#tasks-table td:contains('Niedrig')").addClass("not-important");
     $("#tasks-table td:contains('In Plannung')").addClass("in-planning");
