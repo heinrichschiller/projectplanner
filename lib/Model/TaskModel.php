@@ -13,6 +13,7 @@ class TaskModel
     private $_end = '';
     private $_statusId = 0;
     private $_status = '';
+    private $_priorityId = 0;
     private $_priority = '';
     private $_contactId = '';
     private $_projectId = '';
@@ -39,7 +40,7 @@ class TaskModel
      */
     public function setId($id)
     {
-        $this->_id = $id;
+        $this->_id = (int) $id;
 
         return $this;
     }
@@ -167,7 +168,7 @@ class TaskModel
      */
     public function setStatusId($statusId)
     {
-        $this->_statusId = $statusId;
+        $this->_statusId = (int) $statusId;
 
         return $this;
     }
@@ -192,6 +193,30 @@ class TaskModel
     public function setStatus($status)
     {
         $this->_status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of priority.
+     *
+     * @return string
+     */
+    public function getPriorityId()
+    {
+        return $this->_priority;
+    }
+
+    /**
+     * Set the value of priority
+     *
+     * @param string priority
+     *
+     * @return self
+     */
+    public function setPriorityId($priority)
+    {
+        $this->_priority = (int) $priority;
 
         return $this;
     }
@@ -239,7 +264,7 @@ class TaskModel
      */
     public function setContactId($contactId)
     {
-        $this->_contactId = $contactId;
+        $this->_contactId = (int) $contactId;
 
         return $this;
     }
@@ -263,7 +288,7 @@ class TaskModel
      */
     public function setProjectId($projectId)
     {
-        $this->_projectId = $projectId;
+        $this->_projectId = (int) $projectId;
 
         return $this;
     }

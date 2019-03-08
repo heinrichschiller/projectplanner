@@ -38,6 +38,16 @@ class ContactController extends Base
         header('Location: '. \App::getBaseUrl() . 'contact/index');
     }
 
+    public function updateAction()
+    {
+        User::checkLogin();
+
+        $contact = new ContactResource();
+        $contact->update($_POST);
+
+        header('Location: '. \App::getBaseUrl() . 'contact/index');
+    }
+
     public function viewAction($params)
     {
         User::checkLogin();

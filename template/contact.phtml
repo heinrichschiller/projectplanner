@@ -14,6 +14,9 @@
             <?php endif; ?>
         </div>
         <div>
+            <input type="hidden" name="id" value="<?= isset($contact) ? $contact->getId() : ''; ?>">
+        </div>
+        <div>
             <label for="name">Firma:</label>
             <input type="text" name="name" value="<?= isset($contact) ? $contact->getName() : ''; ?>" id="name">
         </div>

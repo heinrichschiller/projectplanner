@@ -117,20 +117,32 @@ class ContactResource extends Base
     {
         $contact = new ContactModel();
 
+        $contact->setId($values['id']);
         $contact->setName($values['name']);
         $contact->setFirstname($values['firstname']);
         $contact->setLastname($values['lastname']);
         $contact->setCity($values['city']);
         $contact->setPhone($values['phone']);
 
-        $sql = "
+        $sql = '
         UPDATE `contact` SET `name`=:name,
             `firstname`=:firstname,
             `lastname`=:lastname,
             `city`=:city,
             `phone`=:phone
-            WHERE 1
-        ";
+            WHERE id = ' . $contact->getId();
+
+        $con = $this->connect();
+
+        $stmt = $con->prepare($sql);
+    
+        $stmt->bindParam(':name', $contact->getName());
+        $stmt->bindParam(':firstname', $contact->getFirstname());
+        $stmt->bindParam(':lastname', $contact->getLastname());
+        $stmt->bindParam(':city', $contact->getCity());
+        $stmt->bindParam(':phone', $contact->getPhone());
+
+        $stmt->execute();
     }
 
     public function delete(int $id)

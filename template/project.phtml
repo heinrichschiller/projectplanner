@@ -13,6 +13,9 @@
             <?php endif; ?>
         </div>
         <div>
+            <input type="hidden" name="id" value="<?= isset($project) ? $project->getId() : ''; ?>">
+        </div>
+        <div>
             <label for="name">Titel:</label>
             <input type="text" name="title" value="<?= isset($project) ? $project->getTitle() : ''; ?>" id="name">
         </div>
@@ -26,7 +29,7 @@
             </select>
             <?php else: ?>
             <label for="contact">Kontakt:</label>
-            <input type="text" name="title" value="<?= $contact->getFirstname() . '&nbsp;' . $contact->getLastname(); ?>" id="name">
+            <input type="text" name="contactId" value="<?= $contact->getFirstname() . '&nbsp;' . $contact->getLastname(); ?>" id="name">
             <?php endif; ?>
         <div>
             <label for="contact">Ansprechp.:</label>
@@ -38,9 +41,9 @@
         </div>
         <div>
             <label for="begin">Anfang:</label>
-            <input type="datetime-local" name="begin" value="<?= isset($project) ? $project->getBegin() : ''; ?>" id="begin">
+            <input type="date" name="begin" value="<?= isset($project) ? $project->getBegin() : ''; ?>" id="begin">
             <label for="end">Ende:</label>
-            <input type="datetime-local" name="end" value="<?= isset($project) ? $project->getEnd() : ''; ?>" id="end">
+            <input type="date" name="end" value="<?= isset($project) ? $project->getEnd() : ''; ?>" id="end">
         </div>
         <div>
             <?php if(!isset($project)): ?>

@@ -95,7 +95,7 @@ class ProjectResource extends Base
         	`projects`.`contact_id`,
         	UNIX_TIMESTAMP(`projects`.`created_at`) as created_at
         	FROM `projects`
-            LEFT JOIN `status` ON `status`.`id` = `projects`.`status`
+            LEFT JOIN `status` ON `status`.`id` = `projects`.`status_id`
             WHERE `projects`.`contact_id` = $id
         ";
 
@@ -129,27 +129,67 @@ class ProjectResource extends Base
             `desc`,
             `begin`,
             `end`,
-            `status`,
+            `status_id`,
             `contact_id`)
             VALUES (
                 :title,
                 :desc,
                 :begin,
                 :end,
-                :status,
+                :status_id,
                 :contact_id)
         ";
 
         $con = $this->connect();
 
+        $project = new ProjectModel();
+
+        $project->setTitle($values['title']);
+        $project->setDesc($values['desc']);
+        $project->setBegin($values['begin']);
+        $project->setEnd($values['end']);
+        $project->setStatusId($values['status']);
+        $project->setContactId($values['contactId']);
+
         $stmt = $con->prepare($sql);
 
-        $stmt->bindParam(':title', $values['title']);
-        $stmt->bindParam(':desc', $values['desc']);
-        $stmt->bindParam(':begin', $values['begin']);
-        $stmt->bindParam(':end', $values['end']);
-        $stmt->bindParam(':status', $values['status']);
-        $stmt->bindParam(':contact_id', $values['contactId']);
+        $stmt->bindParam(':title', $project->getTitle());
+        $stmt->bindParam(':desc', $project->getDesc());
+        $stmt->bindParam(':begin', $project->getBegin());
+        $stmt->bindParam(':end', $project->getEnd());
+        $stmt->bindParam(':status_id', $project->getStatusId());
+        $stmt->bindParam(':contact_id', $project->getContactId());
+
+        $stmt->execute();
+    }
+
+    public function update($values)
+    {
+        $project = new ProjectModel();
+
+        $project->setId($values['id']);
+        $project->setTitle($values['title']);
+        $project->setDesc($values['desc']);
+        $project->setBegin($values['begin']);
+        $project->setEnd($values['end']);
+        $project->setStatusId($values['status']);
+
+        $sql = "
+        UPDATE `projects` SET `title` = :title,
+            `desc` = :desc,
+            `begin` = :begin,
+            `end` = :end,
+            `status_id` = :status_id
+            WHERE id = " . $project->getId();
+
+        $con = $this->connect();
+        $stmt = $con->prepare($sql);
+
+        $stmt->bindParam(':title', $project->getTitle());
+        $stmt->bindParam(':desc', $project->getDesc());
+        $stmt->bindParam(':begin', $project->getBegin());
+        $stmt->bindParam(':end', $project->getEnd());
+        $stmt->bindParam(':status_id', $project->getStatusId());
 
         $stmt->execute();
     }

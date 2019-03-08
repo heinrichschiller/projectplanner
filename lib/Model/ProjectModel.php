@@ -11,6 +11,7 @@ class ProjectModel
     private $_desc = '';
     private $_begin = '';
     private $_end = '';
+    private $_priorityId = 0;
     private $_priority = '';
     private $_statusId = 0;
     private $_status = '';
@@ -36,9 +37,9 @@ class ProjectModel
      *
      * @return self
      */
-    public function setId($_id)
+    public function setId($id)
     {
-        $this->_id = $_id;
+        $this->_id = (int) $id;
 
         return $this;
     }
@@ -84,9 +85,9 @@ class ProjectModel
      *
      * @return self
      */
-    public function setDesc($_desc)
+    public function setDesc($desc)
     {
-        $this->_desc = $_desc;
+        $this->_desc = $desc;
 
         return $this;
     }
@@ -98,6 +99,10 @@ class ProjectModel
      */
     public function getBegin()
     {
+        if($this->_begin == '01.01.1970 01:00') {
+            return 'Nicht festgelegt';
+        }
+
         return $this->_begin;
     }
 
@@ -122,6 +127,10 @@ class ProjectModel
      */
     public function getEnd()
     {
+        if($this->_begin == '01.01.1970 01:00') {
+            return 'Nicht festgelegt';
+        }
+        
         return $this->_end;
     }
 
@@ -135,6 +144,18 @@ class ProjectModel
     public function setEnd($end)
     {
         $this->_end = Date::getInstance()->formatDateTime($end);
+
+        return $this;
+    }
+
+    public function getPriorityId()
+    {
+        return $this->_priority;
+    }
+
+    public function setPriorityId($priority)
+    {
+        $this->_priority = (int) $priority;
 
         return $this;
     }
@@ -158,7 +179,7 @@ class ProjectModel
 
     public function setStatusId($id)
     {
-        $this->_statusId = $id;
+        $this->_statusId = (int) $id;
 
         return $this;
     }
@@ -205,7 +226,7 @@ class ProjectModel
      */
     public function setContactId($contactId)
     {
-        $this->_contactId = $contactId;
+        $this->_contactId = (int) $contactId;
 
         return $this;
     }

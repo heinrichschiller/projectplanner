@@ -49,6 +49,16 @@ class ProjectController extends Base
         header('Location: ' . \App::getBaseUrl() . 'project/index');
     }
 
+    public function updateAction() {
+        User::checkLogin();
+
+        $project = new ProjectResource();
+
+        $project->update($_POST);
+
+        header('Location: ' . \App::getBaseUrl() . 'project/index');
+    }
+
     public function editAction($params) {
         User::checkLogin();
 
