@@ -54,13 +54,22 @@
                 <?php endforeach; ?>
             </select>
             <?php else: ?>
-            <label for="status">Status:</label>
-            <select id="status" name="status">
+            <label for="status_id">Status:</label>
+            <select id="status" name="status_id">
                 <?php foreach ($statusList as $status): ?>
                 <option value="<?= $status['id']; ?>" <?= ($project->getStatusId() == $status['id']) ? 'selected' : ''; ?>><?= $status['desc']; ?></option>
                 <?php endforeach; ?>
             </select>
             <?php endif; ?>
+        </div>
+        <div>
+            <label for="status_id">Priorität:</label>
+            <select name="priority_id">
+                <option value="4">Niedrig</option>
+                <option value="3">Mittel</option>
+                <option value="2">Hoch</option>
+                <option value="1">Sehr Hoch</option>
+            </select>
         </div>
         <div class="button-row">
             <button type="submit" class="button">Speichern</button>
