@@ -25,6 +25,7 @@ class TaskResource extends Base
             LEFT JOIN `priority` ON `priority`.`id` = `tasks`.`priority`
             LEFT JOIN `status` ON `status`.`id` = `tasks`.`status`
             LEFT JOIN `projects` ON `projects`.`id` = `tasks`.`project_id`
+                WHERE `tasks`.`status` != 4 AND `tasks`.`status` != 5
         ';
 
         $dbResult = $this->connect()->query($sql);
@@ -217,7 +218,8 @@ class TaskResource extends Base
         $stmt->bindParam(':desc', $values['desc']);
         $stmt->bindParam(':begin', $values['begin']);
         $stmt->bindParam(':end', $values['end']);
-        $stmt->bindParam(':status', $values['status']);
+        $stmt->bindParam(':status_id', $values['status_id']);
+        $stmt->bindParam(':priority_id', $values['priority_id']);
         $stmt->bindParam(':contact_id', $values['contactId']);
         $stmt->bindParam(':project_id', $values['projectId']);
 
