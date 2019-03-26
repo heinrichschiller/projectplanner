@@ -100,7 +100,7 @@ class TaskModel
      */
     public function getBegin()
     {
-        if($this->_begin == '01.01.1970 01:00') {
+        if(strpos($this->_begin, '01.01.1970') !== false) {
             return 'Nicht festgelegt';
         }
 
@@ -128,10 +128,10 @@ class TaskModel
      */
     public function getEnd()
     {
-        if($this->_end == '01.01.1970 01:00') {
+        if(strpos($this->_end, '01.01.1970') !== false) {
             return 'Nicht festgelegt';
         }
-        
+
         return $this->_end;
     }
 

@@ -99,7 +99,8 @@ class ProjectModel
      */
     public function getBegin()
     {
-        if($this->_begin == '01.01.1970 01:00') {
+
+        if(strpos($this->_begin, '01.01.1970') !== false) {
             return 'Nicht festgelegt';
         }
 
@@ -127,10 +128,10 @@ class ProjectModel
      */
     public function getEnd()
     {
-        if($this->_begin == '01.01.1970 01:00') {
+        if(strpos($this->_begin, '01.01.1970') !== false) {
             return 'Nicht festgelegt';
         }
-        
+
         return $this->_end;
     }
 
