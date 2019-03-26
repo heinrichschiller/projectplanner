@@ -28,6 +28,10 @@ class User
     public static function logout()
     {
         self::initSession();
+
+        $_SESSION['user_id'] = '';
+        $_SESSION['user_email'] = '';
+
         session_destroy();
     }
 
