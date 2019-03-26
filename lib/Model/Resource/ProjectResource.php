@@ -148,7 +148,8 @@ class ProjectResource extends Base
         $project->setDesc($values['desc']);
         $project->setBegin($values['begin']);
         $project->setEnd($values['end']);
-        $project->setStatusId($values['status']);
+        $project->setStatusId($values['status_id']);
+        $project->setPriorityId($values['priority_id']);
         $project->setContactId($values['contactId']);
 
         $stmt = $con->prepare($sql);
@@ -158,6 +159,7 @@ class ProjectResource extends Base
         $stmt->bindParam(':begin', $project->getBegin());
         $stmt->bindParam(':end', $project->getEnd());
         $stmt->bindParam(':status_id', $project->getStatusId());
+        $stmt->bindParam(':priority_id', $project->getPriorityId());
         $stmt->bindParam(':contact_id', $project->getContactId());
 
         $stmt->execute();
