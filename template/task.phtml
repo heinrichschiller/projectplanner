@@ -46,7 +46,7 @@
         </div>
         <div>
             <label for="status">Status:</label>
-            <select id="status" name="status">
+            <select id="status" name="status_id">
                 <?php foreach ($statusList as $status): ?>
                     <?php if(isset($task)): ?>
                     <option value="<?= $status['id']; ?>" <?= ($status['id'] == $task->getStatusId()) ? ' selected' : ''; ?>><?= $status['desc']; ?></option>
@@ -54,6 +54,15 @@
                     <option value="<?= $status['id']; ?>"><?= $status['desc']; ?></option>
                     <?php endif; ?>
                 <?php endforeach; ?>
+            </select>
+        </div>
+        <div>
+            <label for="priority">Priorität:</label>
+            <select name="priority_id" id="priority">
+                <option value="4">Niedrig</option>
+                <option value="3">Mittel</option>
+                <option value="2">Hoch</option>
+                <option value="1">Sehr Hoch</option>
             </select>
         </div>
         <div class="button-row">
